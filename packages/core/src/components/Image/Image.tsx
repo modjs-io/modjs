@@ -8,8 +8,11 @@ interface ImageProps {
   height?: 'sm' | 'md' | 'lg' | 'full'
   width?: 'sm' | 'md' | 'lg' | 'full'
 }
+const forwardProps = (prop: string) => !['notched', 'brightness', 'height', 'width'].includes(prop);
 
-const ModImage = styled.img<ImageProps>`
+const ModImage = styled.img.withConfig({
+    shouldForwardProp: (prop) => forwardProps(prop)
+  })<ImageProps>`
     height: ${props => 
         props.height === 'sm' ? ({theme}) => theme.image.height.sm : 
         props.height === 'md' ? ({theme}) => theme.image.height.md : 
@@ -32,9 +35,9 @@ const ModImage = styled.img<ImageProps>`
     ''};
 `
 
-const Image = ({ brightness, height, width, ...props }: ImageProps) => {
+const Image = ({ ...props }: ImageProps) => {
   return (
-    <ModImage brightness = {brightness} height = {height} width = {width} {...props} />  
+    <ModImage {...props} />  
     )
 }
 

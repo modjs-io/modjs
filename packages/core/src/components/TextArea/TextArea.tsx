@@ -8,7 +8,11 @@ interface TextAreaProps {
   resize? : 'vertical' | 'horizontal' | 'none'
 }
 
-const ModTextAreaWrap = styled.div<TextAreaProps>`
+const forwardProps = (prop: string) => !['type', 'variant', 'resize'].includes(prop);
+
+const ModTextAreaWrap = styled.div.withConfig({
+  shouldForwardProp: (prop) => forwardProps(prop)
+})<TextAreaProps>`
     position: relative;
     overflow: hidden;
     display: flex;
@@ -28,7 +32,9 @@ const ModTextAreaWrap = styled.div<TextAreaProps>`
     }
 `
 
-const ModTextarea = styled.textarea<TextAreaProps>`
+const ModTextarea = styled.textarea.withConfig({
+  shouldForwardProp: (prop) => forwardProps(prop)
+})<TextAreaProps>`
     resize: ${props => props.resize === "vertical" ? "vertical" : props.resize === "horizontal" ? "horizontal" : props.resize === "none" ? "none" : ''};
     ${props => props.variant === "outlined" && `
         font-size: ${props.theme.fs.md};
@@ -50,11 +56,11 @@ const ModTextarea = styled.textarea<TextAreaProps>`
     `
 }
 `
-const TextArea = ({ type, variant, resize, ...props }: TextAreaProps) => {
+const TextArea = ({ ...props }: TextAreaProps) => {
   return (
     <>
       <ModTextAreaWrap>
-        <ModTextarea {...props} type={type} variant = {variant} resize = {resize}/>
+        <ModTextarea {...props} />
       </ModTextAreaWrap>
     </>
   )

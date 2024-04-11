@@ -78,17 +78,17 @@ const AppbarMobile = ({
   }, [])
 
   return (
-    <ModAppbarMobile sticky = {sticky} top = {top.toString()} {...props}>
+    <ModAppbarMobile sticky = {sticky} {...props}>
         <Box pr = "dense" pl = "dense">{logo}</Box>
         {mobileMenuVisible ? (
             <>
-             <Box display='flex' alignitems = "center" justifycontent = "end" gap = "dense" pr = "dense" pl = "dense">
+             <Box display='flex' alignItems = "center" justifyContent = "end" gap = "dense" pr = "dense" pl = "dense">
                 <Box>{toolbarItem}</Box>
                 <Box onClick={handleMenuToggle}>{closeIcon}</Box>
             </Box>
             <ModAppbarMenu>
                 {menuItems}
-                <Box display='flex' justifycontent='space-between' p = "dense">
+                <Box display='flex' justifyContent='space-between' p = "dense">
                     {footerItems}
                 </Box>
             </ModAppbarMenu>

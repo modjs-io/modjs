@@ -5,16 +5,20 @@ import withLayout from '../../assets/withLayout'
 interface CardProps {
   children: React.ReactNode
   notched?: 'true' | 'false'
-  darkonhover?: 'true' | 'false'
+  darkOnHover?: 'true' | 'false'
 }
 
-const ModCard = styled.div<CardProps>`
+const forwardProps = (prop: string) => !['notched', 'darkOnHover'].includes(prop);
+
+const ModCard = styled.div.withConfig({
+  shouldForwardProp: (prop) => forwardProps(prop)
+})<CardProps>`
   clip-path: ${props => 
     props.notched === "true" ? ({theme}) => theme.notched.secondary : 
   ''};
   &:hover {
-    background-color: ${props => props.darkonhover === "true" ? ({theme}) => theme.color.black : ({theme}) => theme.style.none};
-    transition: ${props => props.darkonhover === "true" ? "0.5s ease-in-out" : ''}
+    background-color: ${props => props.darkOnHover === "true" ? ({theme}) => theme.color.black : ({theme}) => theme.style.none};
+    transition: ${props => props.darkOnHover === "true" ? "0.5s ease-in-out" : ''}
   };
 `
 

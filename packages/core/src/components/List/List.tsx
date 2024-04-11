@@ -4,17 +4,21 @@ import withLayout from '../../assets/withLayout'
 
 interface ListProps {
   children: React.ReactNode
-  liststyle?: 'square' | 'inside' | 'none';
+  listStyle?: 'square' | 'inside' | 'none';
 }
 
-const ModList = styled.li<ListProps>`
-    list-style: ${props => props.liststyle === 'square' ? 'square' : props.liststyle === 'inside' ? 'inside' : props.liststyle === 'none' ? 'none' : 'none'};
+const forwardProps = (prop: string) => !['listStyle'].includes(prop);
+
+const ModList = styled.li.withConfig({
+  shouldForwardProp: (prop) => forwardProps(prop)
+})<ListProps>`
+    list-style: ${props => props.listStyle === 'square' ? 'square' : props.listStyle === 'inside' ? 'inside' : props.listStyle === 'none' ? 'none' : 'none'};
     font-family: ${({theme}) => theme.font.primary};
 `
 
-const List = ({ children, liststyle, ...props }: ListProps) => {
+const List = ({ children, ...props }: ListProps) => {
   return (
-      <ModList liststyle = {liststyle} {...props}>
+      <ModList {...props}>
         {children}
       </ModList>
   )

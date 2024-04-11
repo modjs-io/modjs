@@ -7,8 +7,11 @@ interface TextFieldProps {
   variant?: 'outlined'
   startAdornment?: React.ReactNode
 }
+const forwardProps = (prop: string) => !['type', 'variant'].includes(prop);
 
-const ModTextFieldWrap = styled.div<TextFieldProps>`
+const ModTextFieldWrap = styled.div.withConfig({
+  shouldForwardProp: (prop) => forwardProps(prop)
+})<TextFieldProps>`
     position: relative;
     overflow: hidden;
     display: flex;
@@ -28,7 +31,9 @@ const ModTextFieldWrap = styled.div<TextFieldProps>`
     }
 `
 
-const ModInput = styled.input<TextFieldProps>`
+const ModInput = styled.input.withConfig({
+  shouldForwardProp: (prop) => forwardProps(prop)
+})<TextFieldProps>`
     ${props => props.variant === "outlined" && `
         font-size: ${props.theme.fs.md};
         font-family: ${props.theme.font.primary};
@@ -50,12 +55,12 @@ const ModInput = styled.input<TextFieldProps>`
 }
 `
 
-const TextField = ({ type, variant, startAdornment, ...props }: TextFieldProps) => {
+const TextField = ({ startAdornment, ...props }: TextFieldProps) => {
   return (
     <>
       <ModTextFieldWrap>
         {startAdornment}
-        <ModInput {...props} type={type} variant = {variant}/>
+        <ModInput {...props}/>
       </ModTextFieldWrap>
     </>
   )

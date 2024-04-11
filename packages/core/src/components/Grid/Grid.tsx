@@ -7,7 +7,11 @@ interface GridProps extends React.HTMLAttributes<HTMLDivElement> {
   columns?: Number;
 }
 
-const ModGrid = styled.div<GridProps>`
+const forwardProps = (prop: string) => !['columns'].includes(prop);
+
+const ModGrid = styled.div.withConfig({
+  shouldForwardProp: (prop) => forwardProps(prop)
+})<GridProps>`
     display: grid;
     grid-template-columns: ${props => 
         props.columns === 1 ? 'repeat(1, 1fr)' : 
@@ -27,9 +31,9 @@ const ModGrid = styled.div<GridProps>`
         display: block;
     };
 `
-const Grid: React.FC<GridProps> = ({ children, columns, ...props }) => {
+const Grid: React.FC<GridProps> = ({ children, ...props }) => {
   return (
-    <ModGrid columns = {columns} {...props}>{children}</ModGrid>
+    <ModGrid {...props}>{children}</ModGrid>
   )
 }
 

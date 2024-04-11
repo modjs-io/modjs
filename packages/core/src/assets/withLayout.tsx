@@ -13,30 +13,34 @@ type LayoutProps = {
     pb?: 'udense' | 'xdense' | 'mdense' | 'dense' | 'normal' | 'wide' | 'mwide' | 'xwide' | 'uwide' | 'uuwide' | 'auto' | 'none' | 'negudense' | 'negxdense' | 'negmdense' | 'negdense' | 'negnormal' | 'negwide' | 'negmwide' | 'negxwide' | 'neguwide' | 'neguuwide';
     pl?: 'udense' | 'xdense' | 'mdense' | 'dense' | 'normal' | 'wide' | 'mwide' | 'xwide' | 'uwide' | 'uuwide' | 'auto' | 'none'| 'negudense' | 'negxdense' | 'negmdense' | 'negdense' | 'negnormal' | 'negwide' | 'negmwide' | 'negxwide' | 'neguwide' | 'neguuwide';
     border?: 'light' | 'dark' | 'none';
-    bordertop?: 'light' | 'dark' | 'none';
-    borderright?: 'light' | 'dark' | 'none';
-    borderbottom?: 'light' | 'dark' | 'none';
-    borderleft?: 'light' | 'dark' | 'none';
-    circluar?: 'true' | 'false';
+    borderTop?: 'light' | 'dark' | 'none';
+    borderRight?: 'light' | 'dark' | 'none';
+    borderBottom?: 'light' | 'dark' | 'none';
+    borderLeft?: 'light' | 'dark' | 'none';
+    circular?: 'true' | 'false';
     display?: 'block' | 'inline' | 'inline-block' | 'flex' | 'grid' | 'none';
-    flexwrap?: 'wrap' | 'nowrap';
+    flexWrap?: 'wrap' | 'nowrap';
     gap?: 'udense' | 'xdense' | 'mdense' | 'dense' | 'normal' | 'wide' | 'mwide' | 'xwide' | 'uwide' | 'auto' | 'none';
-    justifycontent?: 'start' | 'center' | 'end' | 'space-between';
-    alignitems?: 'start' | 'center' | 'end';
+    justifyContent?: 'start' | 'center' | 'end' | 'space-between';
+    alignItems?: 'start' | 'center' | 'end';
     float?: 'right' | 'left';
     elevation?: 'light' | 'normal' | 'heavy' | 'none';
-    textalign?: 'left' | 'center' | 'right';
+    textAlign?: 'left' | 'center' | 'right';
     fs?: 'xsm' | 'sm' | 'md' | 'lg' | 'xl';
     fw?: 'medium' | 'semibold' | 'bold';
     color?: 'primary' | 'secondary' | 'white' | 'black' | 'dark' | 'light' | 'transparent';
-    bgcolor?: 'primary' | 'secondary' | 'white' | 'black' | 'dark' | 'light' | 'transparent';
+    bgColor?: 'primary' | 'secondary' | 'white' | 'black' | 'dark' | 'light' | 'transparent';
     position?: 'absolute' | 'relative' | 'fixed' | 'sticky' | 'static' | 'inherit';
     bottom?: 'none';
     top?: 'none';
 };
 
+const forwardProps = (prop: string) => !['m', 'mt', 'mr', 'mb', 'ml', 'p', 'pt', 'pr', 'pb', 'pl', 'border', 'borderTop', 'borderRight', 'borderBottom', 'borderLeft', 'circular', 'display', 'flexWrap', 'gap', 'justifyContent', 'alignItems', 'float', 'elevation', 'textAlign', 'fs', 'fw', 'color', 'bgColor', 'position', 'bottom', 'top'].includes(prop);
+
 const withLayout = <P extends object>(WrappedComponent: React.ComponentType<P>) => {
-    const LayoutComponent = styled(WrappedComponent)<LayoutProps>`
+    const LayoutComponent = styled(WrappedComponent).withConfig({
+        shouldForwardProp: (prop) => forwardProps(prop)
+      })<LayoutProps>`
         margin: ${({theme, m}) => (
             m === 'udense' ? theme.spacing.udense : 
             m === 'xdense' ? theme.spacing.xdense : 
@@ -282,25 +286,25 @@ const withLayout = <P extends object>(WrappedComponent: React.ComponentType<P>) 
             border === 'dark' ? theme.border.dark : 
             border === 'none' ? theme.style.none : 
         '')};
-        border-top: ${({theme, bordertop}) => (
-            bordertop === 'light' ? theme.border.light :
-            bordertop === 'dark' ? theme.border.dark : 
-            bordertop === 'none' ? theme.style.none : 
+        border-top: ${({theme, borderTop}) => (
+            borderTop === 'light' ? theme.border.light :
+            borderTop === 'dark' ? theme.border.dark : 
+            borderTop === 'none' ? theme.style.none : 
         '')};
-        border-right: ${({theme, borderright}) => (
-            borderright === 'light' ? theme.border.light :
-            borderright === 'dark' ? theme.border.dark : 
-            borderright === 'none' ? theme.style.none : 
+        border-right: ${({theme, borderRight}) => (
+            borderRight === 'light' ? theme.border.light :
+            borderRight === 'dark' ? theme.border.dark : 
+            borderRight === 'none' ? theme.style.none : 
         '')};
-        border-bottom: ${({theme, borderbottom}) => (
-            borderbottom === 'light' ? theme.border.light :
-            borderbottom === 'dark' ? theme.border.dark : 
-            borderbottom === 'none' ? theme.style.none : 
+        border-bottom: ${({theme, borderBottom}) => (
+            borderBottom === 'light' ? theme.border.light :
+            borderBottom === 'dark' ? theme.border.dark : 
+            borderBottom === 'none' ? theme.style.none : 
         '')};
-        border-left: ${({theme, borderleft}) => (
-            borderleft === 'light' ? theme.border.light :
-            borderleft === 'dark' ? theme.border.dark : 
-            borderleft === 'none' ? theme.style.none : 
+        border-left: ${({theme, borderLeft}) => (
+            borderLeft === 'light' ? theme.border.light :
+            borderLeft === 'dark' ? theme.border.dark : 
+            borderLeft === 'none' ? theme.style.none : 
         '')};
         border-radius: ${({circular}) => (
             circular === 'true' ? '100%' : '0' 
@@ -313,9 +317,9 @@ const withLayout = <P extends object>(WrappedComponent: React.ComponentType<P>) 
             display === 'grid' ? 'grid' : 
             display === 'none' ? 'none' : 
         '')};
-        flex-wrap: ${({flexwrap}) => (
-            flexwrap === 'wrap' ? 'wrap' : 
-            flexwrap === 'nowrap' ? 'nowrap' : 
+        flex-wrap: ${({flexWrap}) => (
+            flexWrap === 'wrap' ? 'wrap' : 
+            flexWrap === 'nowrap' ? 'nowrap' : 
         '')};
         gap: ${({theme, gap}) => (
             gap === 'udense' ? theme.spacing.udense : 
@@ -330,16 +334,16 @@ const withLayout = <P extends object>(WrappedComponent: React.ComponentType<P>) 
             gap === 'auto' ? theme.spacing.auto :
             gap === 'none' ? theme.style.none :
         '')};
-        justify-content: ${({justifycontent}) => (
-            justifycontent === 'start' ? 'flex-start' :
-            justifycontent === 'center' ? 'center' : 
-            justifycontent === 'end' ? 'flex-end' : 
-            justifycontent === 'space-between' ? 'space-between' : 
+        justify-content: ${({justifyContent}) => (
+            justifyContent === 'start' ? 'flex-start' :
+            justifyContent === 'center' ? 'center' : 
+            justifyContent === 'end' ? 'flex-end' : 
+            justifyContent === 'space-between' ? 'space-between' : 
         '')};
-        align-items: ${({alignitems}) => (
-            alignitems === 'start' ? 'start' :
-            alignitems === 'center' ? 'center' : 
-            alignitems === 'end' ? 'end' : 
+        align-items: ${({alignItems}) => (
+            alignItems === 'start' ? 'start' :
+            alignItems === 'center' ? 'center' : 
+            alignItems === 'end' ? 'end' : 
         '')};
         float: ${({float}) => (
             float === 'right' ? 'right' :
@@ -351,10 +355,10 @@ const withLayout = <P extends object>(WrappedComponent: React.ComponentType<P>) 
             elevation === 'heavy' ? theme.elevation.heavy :
             elevation === 'none' ? theme.elevation.none :
         '')};
-        text-align: ${({textalign}) => (
-            textalign === 'left' ? 'left' :
-            textalign === 'center' ? 'center' : 
-            textalign === 'right' ? 'right' : 
+        text-align: ${({textAlign}) => (
+            textAlign === 'left' ? 'left' :
+            textAlign === 'center' ? 'center' : 
+            textAlign === 'right' ? 'right' : 
         '')};
         font-size: ${({theme, fs}) => (
             fs === 'xsm' ? theme.fs.xsm : 
@@ -377,14 +381,14 @@ const withLayout = <P extends object>(WrappedComponent: React.ComponentType<P>) 
             color === 'light' ? theme.color.light : 
             color === 'transparent' ? theme.color.transparent : 
         '')};
-        background-color: ${({theme, bgcolor}) => (
-            bgcolor === 'primary' ? theme.color.primary : 
-            bgcolor === 'secondary' ? theme.color.secondary : 
-            bgcolor === 'white' ? theme.color.white : 
-            bgcolor === 'black' ? theme.color.black : 
-            bgcolor === 'dark' ? theme.color.dark : 
-            bgcolor === 'light' ? theme.color.light : 
-            bgcolor === 'transparent' ? theme.color.transparent : 
+        background-color: ${({theme, bgColor}) => (
+            bgColor === 'primary' ? theme.color.primary : 
+            bgColor === 'secondary' ? theme.color.secondary : 
+            bgColor === 'white' ? theme.color.white : 
+            bgColor === 'black' ? theme.color.black : 
+            bgColor === 'dark' ? theme.color.dark : 
+            bgColor === 'light' ? theme.color.light : 
+            bgColor === 'transparent' ? theme.color.transparent : 
         '')};
         position: ${({position}) => (
             position === 'absolute' ? 'absolute' :

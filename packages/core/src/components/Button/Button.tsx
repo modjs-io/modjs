@@ -10,7 +10,11 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   notched?: 'true' | 'false';
 }
 
-const ModButton = styled.button<ButtonProps>`
+const forwardProps = (prop: string) => !['variant', 'notched'].includes(prop);
+
+const ModButton = styled.button.withConfig({
+  shouldForwardProp: (prop) => forwardProps(prop)
+})<ButtonProps>`
   background-color: ${props => 
     props.variant === "filled" ? ({theme}) => theme.color.primary : 
     props.variant === "outlined" ? ({theme}) => theme.color.transparent : 
@@ -62,9 +66,9 @@ const ModButton = styled.button<ButtonProps>`
     opacity: ${({theme}) => theme.opacity.medium};
   }
 `
-const Button: React.FC<ButtonProps> = ({ children, startAdornment, endAdornment, variant, notched, ...props }) => {
+const Button: React.FC<ButtonProps> = ({ children, startAdornment, endAdornment, ...props }) => {
   return (
-    <ModButton variant = {variant} notched = {notched} {...props}>{startAdornment}{children}{endAdornment}</ModButton>
+    <ModButton {...props}>{startAdornment}{children}{endAdornment}</ModButton>
   )
 }
 

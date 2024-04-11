@@ -7,7 +7,11 @@ interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
   fluid?: 'true' | 'false'
 }
 
-const ModContainer = styled.div<ContainerProps>`
+const forwardProps = (prop: string) => !['fluid'].includes(prop);
+
+const ModContainer = styled.div.withConfig({
+  shouldForwardProp: (prop) => forwardProps(prop)
+})<ContainerProps>`
   max-width: ${props => props.fluid === 'true' ? '' : '1280px'};
   margin: ${props => props.fluid === 'true' ? '' : 'auto'};
   padding-right: ${({theme}) => theme.spacing.mwide};
@@ -21,9 +25,9 @@ const ModContainer = styled.div<ContainerProps>`
     padding-left: ${({theme}) => theme.spacing.normal};
   };
 `
-const Container: React.FC<ContainerProps> = ({ children, fluid, ...props }) => {
+const Container: React.FC<ContainerProps> = ({ children, ...props }) => {
   return (
-    <ModContainer fluid = {fluid} {...props}>{children}</ModContainer>
+    <ModContainer {...props}>{children}</ModContainer>
   )
 }
 

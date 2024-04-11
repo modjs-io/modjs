@@ -8,7 +8,11 @@ interface AvatarProps {
   width?: 'sm' | 'md' | 'lg'
 }
 
-const ModAvatar = styled.img<AvatarProps>`
+const forwardProps = (prop: string) => !['brightness', 'height', 'width'].includes(prop);
+
+const ModAvatar = styled.img.withConfig({
+    shouldForwardProp: (prop) => forwardProps(prop)
+  })<AvatarProps>`
     height: ${props => 
         props.height === 'sm' ? ({theme}) => theme.avatar.height.sm : 
         props.height === 'md' ? ({theme}) => theme.avatar.height.md : 
@@ -27,9 +31,9 @@ const ModAvatar = styled.img<AvatarProps>`
     border-radius: 100%;
 `
 
-const Avatar = ({ brightness, height, width, ...props }: AvatarProps) => {
+const Avatar = ({ ...props }: AvatarProps) => {
   return (
-    <ModAvatar brightness = {brightness} height = {height} width = {width} {...props} />  
+    <ModAvatar {...props} />  
     )
 }
 

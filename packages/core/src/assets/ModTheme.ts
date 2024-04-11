@@ -1,5 +1,3 @@
-//Fonts: KoHo
-
 const ModTheme = {
   font: {
     primary: 'KoHo',

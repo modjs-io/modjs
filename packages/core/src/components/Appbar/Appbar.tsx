@@ -7,7 +7,11 @@ interface AppbarProps {
   sticky?: 'true' | 'false'
 }
 
-const ModAppbar = styled.nav<AppbarProps>`
+const forwardProps = (prop: string) => !['sticky'].includes(prop);
+
+const ModAppbar = styled.nav.withConfig({
+  shouldForwardProp: (prop) => forwardProps(prop)
+})<AppbarProps>`
     background-color: ${({theme}) => theme.color.white};
     ${props => props.sticky === "false" && `
         position: static;
@@ -25,7 +29,7 @@ const ModAppbar = styled.nav<AppbarProps>`
     };
 `
 
-const Appbar = ({ children, sticky, ...props }: AppbarProps) => {
+const Appbar = ({ children, ...props }: AppbarProps) => {
   const [top, settop] = useState(false)
 
   const handleScroll = () => {
@@ -44,7 +48,7 @@ const Appbar = ({ children, sticky, ...props }: AppbarProps) => {
   }, [])
 
   return (
-      <ModAppbar sticky = {sticky} top = {top.toString()} {...props}>
+      <ModAppbar {...props}>
         {children}
       </ModAppbar>
   )

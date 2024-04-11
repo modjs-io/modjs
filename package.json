@@ -1,6 +1,6 @@
 {
   "name": "@modjs/monorepo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "keywords": ["modjs", "modjs-icons", "react-icons", "react-components", "react", "ui", "frontend"],
   "author": "Prashan Pudasaini",

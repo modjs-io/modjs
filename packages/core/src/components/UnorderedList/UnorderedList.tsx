@@ -6,16 +6,19 @@ interface UnorderedListProps {
   children: React.ReactNode
   indent?: 'true' | 'false'
 }
+const forwardProps = (prop: string) => !['indent'].includes(prop);
 
-const ModUnorderedList = styled.ul<UnorderedListProps>`
+const ModUnorderedList = styled.ul.withConfig({
+  shouldForwardProp: (prop) => forwardProps(prop)
+})<UnorderedListProps>`
   margin: 0;
   padding-left: ${props => props.indent === "false" ? "0" : "3em"};
   padding-right: ${props => props.indent === "false" ? "0" : "3em"};
 `
 
-const UnorderedList = ({ children, indent, ...props }: UnorderedListProps) => {
+const UnorderedList = ({ children, ...props }: UnorderedListProps) => {
   return (
-    <ModUnorderedList indent = {indent} {...props}>
+    <ModUnorderedList {...props}>
       {children}
     </ModUnorderedList>
   )
