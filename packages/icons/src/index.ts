@@ -32,6 +32,7 @@ import MobileSettingsIcon from './components/MobileSettingsIcon/MobileSettingsIc
 import MongoDbIcon from './components/MongoDbIcon/MongoDbIcon'
 import NodeIcon from './components/NodeIcon/NodeIcon'
 import PasswordIcon from './components/PasswordIcon/PasswordIcon'
+import PilotProIcon from './components/PilotProIcon/PilotproIcon'
 import PlayIcon from './components/PlayIcon/PlayIcon'
 import PostgreSqlIcon from './components/PostgreSqlIcon/PostgreSqlIcon'
 import PythonIcon from './components/PythonIcon/PythonIcon'
@@ -85,6 +86,7 @@ export {
     MongoDbIcon,
     NodeIcon,
     PasswordIcon,
+    PilotProIcon,
     PlayIcon,
     PostgreSqlIcon,
     PythonIcon,
