@@ -8,6 +8,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   endAdornment?: React.ReactNode;
   variant?: 'filled' | 'outlined' | 'transparent' | 'icon' | 'text';
   notched?: 'true' | 'false';
+  disabled?: boolean;
 }
 
 const forwardProps = (prop: string) => !['variant', 'notched'].includes(prop);
@@ -49,6 +50,7 @@ const ModButton = styled.button.withConfig({
   justify-content: ${props => 
     props.variant === "outlined" ? "center" : "left"
   };
+  opacity: ${props => props.disabled === true ? "0.5" : '1'};
   border: ${props => props.variant === "icon" ? `1px solid ${props.theme.color.light}` : ({theme}) => theme.style.none};
   ${props => props.variant === "outlined" && `
     &::before {
@@ -62,13 +64,13 @@ const ModButton = styled.button.withConfig({
       height: 100%;
     }
   `};
-  &:hover {
-    opacity: ${({theme}) => theme.opacity.medium};
-  }
+    &:hover {
+      opacity: ${props => props.disabled === false ? ({theme}) => theme.opacity.medium : '0.5'};
+    }
 `
-const Button: React.FC<ButtonProps> = ({ children, startAdornment, endAdornment, ...props }) => {
+const Button: React.FC<ButtonProps> = ({ children, disabled, startAdornment, endAdornment, ...props }) => {
   return (
-    <ModButton {...props}>{startAdornment}{children}{endAdornment}</ModButton>
+    <ModButton disabled = {disabled} {...props}>{startAdornment}{children}{endAdornment}</ModButton>
   )
 }
 

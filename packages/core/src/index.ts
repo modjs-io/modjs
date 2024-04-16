@@ -19,6 +19,7 @@ import Image from './components/Image/Image'
 import Link from './components/Link/Link'
 import List from './components/List/List'
 import OrderedList from './components/OrderedList/OrderedList'
+import PhoneField from './components/PhoneField/PhoneField'
 import ProgressBar from './components/ProgrressBar/ProgressBar'
 import Section from './components/Section/Section'
 import Slideshow from './components/Slideshow/Slideshow'
@@ -39,5 +40,5 @@ import useMediaQuery from './assets/useMediaQuery'
 import withLayout from './assets/withLayout'
 import ModTheme from './assets/ModTheme'
 
-export {Appbar, AppbarMobile, Avatar, Box, Button, Card, CardContent, CardFooter, CardHeader, CardMedia, CardMeta, Container, Curtain, Footer, Form, Grid, Header, Image, Link, List, OrderedList, ProgressBar, Section, Slideshow, SlideshowDescription, SlideshowExcerpt, SlideshowFooter, SlideshowItem, SlideshowItems, SlideshowMedia, SlideshowNavigation, TextArea, TextField, Toolbar, Typography, UnorderedList, ModTheme, useMediaQuery, withLayout }
+export {Appbar, AppbarMobile, Avatar, Box, Button, Card, CardContent, CardFooter, CardHeader, CardMedia, CardMeta, Container, Curtain, Footer, Form, Grid, Header, Image, Link, List, OrderedList, PhoneField, ProgressBar, Section, Slideshow, SlideshowDescription, SlideshowExcerpt, SlideshowFooter, SlideshowItem, SlideshowItems, SlideshowMedia, SlideshowNavigation, TextArea, TextField, Toolbar, Typography, UnorderedList, ModTheme, useMediaQuery, withLayout }
  
