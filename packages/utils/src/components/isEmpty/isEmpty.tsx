@@ -1,4 +1,4 @@
-const isEmpty = (value: string) => {
+const isEmpty = async (value: string) => {
     if (value === null || value === undefined || value.trim() === '') {
         return true
     } else {
