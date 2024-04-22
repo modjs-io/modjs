@@ -1,7 +1,8 @@
-import formatEmail from "./components/formatEmail/formatEmail";
-import formatPhone from "./components/formatPhone/formatPhone";
-import isEmpty from "./components/isEmpty/isEmpty";
-import validateEmail from "./components/validateEmail/validateEmail";
-import validatePhone from "./components/validatePhone/validatePhone";
+import formatEmail from "./functions/formatEmail/formatEmail";
+import formatPhone from "./functions/formatPhone/formatPhone";
+import generateUuid from "./functions/generateUuid/generateUuid";
+import isEmpty from "./functions/isEmpty/isEmpty";
+import validateEmail from "./functions/validateEmail/validateEmail";
+import validatePhone from "./functions/validatePhone/validatePhone";
 
-export {formatEmail, formatPhone, isEmpty, validateEmail, validatePhone}
+export {formatEmail, formatPhone, generateUuid, isEmpty, validateEmail, validatePhone}
