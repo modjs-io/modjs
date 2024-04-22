@@ -1,18 +1,18 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import {styled} from 'styled-components'
 import Typography from '../Typography/Typography'
 import withLayout from '../../assets/withLayout'
 
-interface PhoneFieldProps {
+interface NameFieldProps {
   variant?: 'outlined'
   startAdornment?: React.ReactNode
-  value?: string
 }
+
 const forwardProps = (prop: string) => !['variant', 'focusWithin', 'active', 'valid'].includes(prop);
 
-const ModPhoneFieldWrap = styled.div.withConfig({
+const ModNameFieldWrap = styled.div.withConfig({
   shouldForwardProp: (prop) => forwardProps(prop)
-})<PhoneFieldProps>`
+})<NameFieldProps>`
     position: relative;
     overflow: hidden;
     display: flex;
@@ -22,8 +22,8 @@ const ModPhoneFieldWrap = styled.div.withConfig({
     margin-bottom: ${({theme}) => theme.spacing.dense};
     &:before {
         content: '';
-        background: ${({ theme, focusWithin, active, valid, value }) =>
-        (focusWithin && !valid || active && !valid ) ? theme.color.error : value && !valid ? theme.color.error : valid ? theme.color.success : theme.color.light};
+        background: ${({ theme, focusWithin, active, valid }) =>
+        (focusWithin && !valid || active && !valid ) ? theme.color.error : valid ? theme.color.success : theme.color.light};
         clip-path: polygon(8px 0%,100% 0%,100% calc(100% - 8px),calc(100% - 8px) 100%,0% 100%,0% 8px,8px 0%,9.9px 0px,1px 8px,1px calc(100% - 1px),calc(100% - 8px) calc(100% - 1px),calc(100% - 1px) calc(100% - 8px),calc(100% - 1px) 1px,7px 1px);
         position: absolute;
         top: 0;
@@ -35,7 +35,7 @@ const ModPhoneFieldWrap = styled.div.withConfig({
 
 const ModInput = styled.input.withConfig({
   shouldForwardProp: (prop) => forwardProps(prop)
-})<PhoneFieldProps>`
+})<NameFieldProps>`
     ${props => props.variant === "outlined" && `
         font-size: ${props.theme.fs.md};
         font-family: ${props.theme.font.primary};
@@ -57,44 +57,38 @@ const ModInput = styled.input.withConfig({
 }
 `
 
-const PhoneField = ({ startAdornment, value, ...props }: PhoneFieldProps) => {
-    const [focusWithin, setFocusWithin] = useState(false);
-    const [active, setActive] = useState(false);
-    const [valid, setValid] = useState(false)
+const NameField = ({ startAdornment, ...props }: NameFieldProps) => {
+  const [focusWithin, setFocusWithin] = useState(false);
+  const [active, setActive] = useState(false);
+  const [valid, setValid] = useState(false);
 
-    //Replace with @modjs/utils validatePhone
-    const handleInput = (event: any) => {
-        let value = event.target.value;
-        value = value.replace(/[^\d\s()-]/g, ''); //Replace eveything with an empty string except for parenthesis, digits, whitespace, and an hyphen.
-        if(value.length === 14) {
-            setValid(true)
-        } else {
-            setValid(false)
-        }
-      };
+  const handleInput = (event: any) => {
+    if(event.target.value.length >=1) {
+      setValid(true);
+    } else {
+      setValid(false)
+    }
+  };
 
   return (
     <>
-        <ModPhoneFieldWrap focusWithin={focusWithin} active={active} valid = {valid} value = {value}>
-            {startAdornment}
-            <ModInput 
-                {...props} 
-                type = "text" 
-                value = {value}
-                maxLength = {14}
-                onInput = {handleInput} 
-                onFocus={() => setFocusWithin(true)}
-                onBlur={() => setFocusWithin(false)}
-                onMouseDown={() => setActive(true)}
-                onMouseUp={() => setActive(false)}
-            />
-        </ModPhoneFieldWrap>
+      <ModNameFieldWrap focusWithin={focusWithin} active={active} valid={valid}>
+        {startAdornment}
+        <ModInput 
+          {...props}
+          type = "text"
+          onFocus={() => setFocusWithin(true)}
+          onBlur={() => setFocusWithin(false)}
+          onMouseDown={() => setActive(true)}
+          onMouseUp={() => setActive(false)}
+          onInput={handleInput}
+        />
+      </ModNameFieldWrap>
         {focusWithin && !valid && 
-            <Typography variant = "small" color = "error">Please enter a valid 10 digit phone number.</Typography>
+          <Typography variant = "small" color = "error">Please enter your full name.</Typography>
         }
     </>
-
   )
 }
 
-export default withLayout(PhoneField)
+export default withLayout(NameField)

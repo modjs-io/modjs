@@ -23,6 +23,8 @@ const ModTheme = {
     light: '#8e8e8e',
     dark: '#474747',
     transparent: 'transparent',
+    success: "#5a6b31",
+    error: "#ca3c1f",
   },
   icons: {
     height: {

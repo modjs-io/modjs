@@ -11,6 +11,7 @@ import DevOpsIcon from './components/DevOpsIcon/DevOpsIcon'
 import DjangoIcon from './components/DjangoIcon/DjangoIcon'
 import DockerIcon from './components/DockerIcon/DockerIcon'
 import EmailIcon from './components/EmailIcon/EmailIcon'
+import ErrorIcon from './components/ErrorIcon/ErrorIcon'
 import FacebookIcon from './components/FacebookIcon/FacebookIcon'
 import FlutterIcon from './components/FlutterIcon/FlutterIcon'
 import FrontendIcon from './components/FrontendIcon/FrontendIcon'
@@ -65,6 +66,7 @@ export {
     DjangoIcon,
     DockerIcon,
     EmailIcon,
+    ErrorIcon,
     FacebookIcon,
     FlutterIcon,
     FrontendIcon,

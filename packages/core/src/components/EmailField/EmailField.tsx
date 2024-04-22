@@ -3,16 +3,16 @@ import {styled} from 'styled-components'
 import Typography from '../Typography/Typography'
 import withLayout from '../../assets/withLayout'
 
-interface PhoneFieldProps {
+interface EmailFieldProps {
   variant?: 'outlined'
   startAdornment?: React.ReactNode
   value?: string
 }
 const forwardProps = (prop: string) => !['variant', 'focusWithin', 'active', 'valid'].includes(prop);
 
-const ModPhoneFieldWrap = styled.div.withConfig({
+const ModEmailFieldWrap = styled.div.withConfig({
   shouldForwardProp: (prop) => forwardProps(prop)
-})<PhoneFieldProps>`
+})<EmailFieldProps>`
     position: relative;
     overflow: hidden;
     display: flex;
@@ -35,7 +35,7 @@ const ModPhoneFieldWrap = styled.div.withConfig({
 
 const ModInput = styled.input.withConfig({
   shouldForwardProp: (prop) => forwardProps(prop)
-})<PhoneFieldProps>`
+})<EmailFieldProps>`
     ${props => props.variant === "outlined" && `
         font-size: ${props.theme.fs.md};
         font-family: ${props.theme.font.primary};
@@ -57,44 +57,43 @@ const ModInput = styled.input.withConfig({
 }
 `
 
-const PhoneField = ({ startAdornment, value, ...props }: PhoneFieldProps) => {
+const EmailField = ({ startAdornment, value, ...props }: EmailFieldProps) => {
     const [focusWithin, setFocusWithin] = useState(false);
     const [active, setActive] = useState(false);
     const [valid, setValid] = useState(false)
 
-    //Replace with @modjs/utils validatePhone
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    //Replace with @modjs/utils validateEmail
     const handleInput = (event: any) => {
-        let value = event.target.value;
-        value = value.replace(/[^\d\s()-]/g, ''); //Replace eveything with an empty string except for parenthesis, digits, whitespace, and an hyphen.
-        if(value.length === 14) {
-            setValid(true)
+        let value = event.target.value
+        if (emailRegex.test(value)) {
+            setValid(true);
         } else {
-            setValid(false)
+            setValid(false);
         }
-      };
+    };
 
   return (
     <>
-        <ModPhoneFieldWrap focusWithin={focusWithin} active={active} valid = {valid} value = {value}>
+        <ModEmailFieldWrap focusWithin={focusWithin} active={active} valid = {valid} value = {value}>
             {startAdornment}
             <ModInput 
                 {...props} 
                 type = "text" 
                 value = {value}
-                maxLength = {14}
                 onInput = {handleInput} 
                 onFocus={() => setFocusWithin(true)}
                 onBlur={() => setFocusWithin(false)}
                 onMouseDown={() => setActive(true)}
                 onMouseUp={() => setActive(false)}
             />
-        </ModPhoneFieldWrap>
+        </ModEmailFieldWrap>
         {focusWithin && !valid && 
-            <Typography variant = "small" color = "error">Please enter a valid 10 digit phone number.</Typography>
+            <Typography variant = "small" color = "error">Please enter a valid email.</Typography>
         }
     </>
-
   )
 }
 
-export default withLayout(PhoneField)
+export default withLayout(EmailField)

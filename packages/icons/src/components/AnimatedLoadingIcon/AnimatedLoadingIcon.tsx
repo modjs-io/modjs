@@ -3,6 +3,7 @@ import {styled} from 'styled-components'
 
 type IconProps = React.SVGAttributes<SVGSVGElement> & {
     fill?: string
+    stroke?: string
     height?: string
     width?: string
 }
@@ -11,9 +12,10 @@ const ModAnimatedLoadingIcon = styled.svg`
   fill: ${props => props.fill ? props.fill : ({theme}) => theme.color.primary};
   height: ${props => props.height ? props.height : ({theme}) => theme.icons.height.sm};
   width: ${props => props.width ? props.width : ({theme}) => theme.icons.width.sm};
+  stroke: ${props => props.stroke ? props.stroke : ({theme}) => theme.color.light};
 `;
 
-const AnimatedLoadingIcon = ({ fill, height, width, ...props }: IconProps) => {
+const AnimatedLoadingIcon = ({ fill, stroke, height, width, ...props }: IconProps) => {
   return (
     <ModAnimatedLoadingIcon
       {...props}
@@ -29,7 +31,7 @@ const AnimatedLoadingIcon = ({ fill, height, width, ...props }: IconProps) => {
         cx='25'
         cy='25'
         fill={fill}
-        stroke='none'
+        stroke={stroke}
         strokeWidth='3'
         r='15'
         strokeDasharray='47.123889803846895 16.041189668484067'

@@ -28,8 +28,8 @@ type LayoutProps = {
     textAlign?: 'left' | 'center' | 'right';
     fs?: 'xsm' | 'sm' | 'md' | 'lg' | 'xl';
     fw?: 'medium' | 'semibold' | 'bold';
-    color?: 'primary' | 'secondary' | 'white' | 'black' | 'dark' | 'light' | 'transparent';
-    bgColor?: 'primary' | 'secondary' | 'white' | 'black' | 'dark' | 'light' | 'transparent';
+    color?: 'primary' | 'secondary' | 'white' | 'black' | 'dark' | 'light' | 'transparent' | 'success' | 'error';
+    bgColor?: 'primary' | 'secondary' | 'white' | 'black' | 'dark' | 'light' | 'transparent' | 'success' | 'error';
     position?: 'absolute' | 'relative' | 'fixed' | 'sticky' | 'static' | 'inherit';
     bottom?: 'none';
     top?: 'none';
@@ -380,6 +380,8 @@ const withLayout = <P extends object>(WrappedComponent: React.ComponentType<P>) 
             color === 'dark' ? theme.color.dark : 
             color === 'light' ? theme.color.light : 
             color === 'transparent' ? theme.color.transparent : 
+            color === 'success' ? theme.color.success : 
+            color === 'error' ? theme.color.error : 
         '')};
         background-color: ${({theme, bgColor}) => (
             bgColor === 'primary' ? theme.color.primary : 
@@ -389,6 +391,8 @@ const withLayout = <P extends object>(WrappedComponent: React.ComponentType<P>) 
             bgColor === 'dark' ? theme.color.dark : 
             bgColor === 'light' ? theme.color.light : 
             bgColor === 'transparent' ? theme.color.transparent : 
+            bgColor === 'success' ? theme.color.success :
+            bgColor === 'error' ? theme.color.error :
         '')};
         position: ${({position}) => (
             position === 'absolute' ? 'absolute' :
