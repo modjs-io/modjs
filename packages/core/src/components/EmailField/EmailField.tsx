@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {styled} from 'styled-components'
+import { validateEmail } from '@modjs/utils'
 import Typography from '../Typography/Typography'
 import withLayout from '../../assets/withLayout'
 
@@ -62,15 +63,11 @@ const EmailField = ({ startAdornment, value, ...props }: EmailFieldProps) => {
     const [active, setActive] = useState(false);
     const [valid, setValid] = useState(false)
 
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-    //Replace with @modjs/utils validateEmail
     const handleInput = (event: any) => {
-        let value = event.target.value
-        if (emailRegex.test(value)) {
-            setValid(true);
+        if(validateEmail(event.target.value)) {
+            setValid(true) 
         } else {
-            setValid(false);
+            setValid(false)
         }
     };
 

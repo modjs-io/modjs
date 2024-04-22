@@ -1,5 +1,8 @@
 import React, {useState} from 'react'
 import {styled} from 'styled-components'
+
+import { isEmpty } from '@modjs/utils'
+
 import Typography from '../Typography/Typography'
 import withLayout from '../../assets/withLayout'
 
@@ -63,8 +66,9 @@ const NameField = ({ startAdornment, ...props }: NameFieldProps) => {
   const [valid, setValid] = useState(false);
 
   const handleInput = (event: any) => {
-    if(event.target.value.length >=1) {
-      setValid(true);
+
+    if(!isEmpty(event.target.value)) {
+      setValid(true) 
     } else {
       setValid(false)
     }

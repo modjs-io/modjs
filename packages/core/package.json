@@ -1,16 +1,26 @@
 {
   "name": "@modjs/core",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "sideEffects": false,
   "main": "./build/cjs/index.js",
   "module": "./build/esm/index.js",
   "types": "build/types/index.d.ts",
-  "files": ["build"],
+  "files": [
+    "build"
+  ],
   "exports": {
     "require": "./build/cjs/index.js",
     "import": "./build/esm/index.js"
   },
-  "keywords": ["modjs", "modjs-icons", "react-icons", "react-components", "react", "ui", "frontend"],
+  "keywords": [
+    "modjs",
+    "modjs-icons",
+    "react-icons",
+    "react-components",
+    "react",
+    "ui",
+    "frontend"
+  ],
   "author": "Prashan Pudasaini",
   "license": "MIT",
   "repository": {
@@ -47,5 +57,8 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.2",
     "styled-components": "^6.1.8"
+  },
+  "dependencies": {
+    "@modjs/utils": "^1.1.0"
   }
 }

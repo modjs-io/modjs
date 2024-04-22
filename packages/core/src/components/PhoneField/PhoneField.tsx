@@ -1,5 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import {styled} from 'styled-components'
+
+import { validatePhone } from '@modjs/utils'
+
 import Typography from '../Typography/Typography'
 import withLayout from '../../assets/withLayout'
 
@@ -62,11 +65,8 @@ const PhoneField = ({ startAdornment, value, ...props }: PhoneFieldProps) => {
     const [active, setActive] = useState(false);
     const [valid, setValid] = useState(false)
 
-    //Replace with @modjs/utils validatePhone
     const handleInput = (event: any) => {
-        let value = event.target.value;
-        value = value.replace(/[^\d\s()-]/g, ''); //Replace eveything with an empty string except for parenthesis, digits, whitespace, and an hyphen.
-        if(value.length === 14) {
+        if(validatePhone(event.target.value)) {
             setValid(true)
         } else {
             setValid(false)
