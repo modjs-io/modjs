@@ -1,7 +1,4 @@
-interface formatEmailProps {
-    value: string
-}
-const formatEmail = (value: any) => {
+const formatEmail = (value: string) => {
     value = value.replace(/\s/g, '');
     return value
 }

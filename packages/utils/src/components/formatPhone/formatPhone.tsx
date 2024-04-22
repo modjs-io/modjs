@@ -1,7 +1,4 @@
-interface formatPhoneProps {
-    value: string
-}
-const formatPhone = (value: any) => {
+const formatPhone = (value: string) => {
     value = value.replace(/\D/g, '');
     if (value.length <= 3) {
         value = `${value}`;

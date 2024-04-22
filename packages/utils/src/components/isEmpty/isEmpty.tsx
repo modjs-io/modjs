@@ -1,7 +1,4 @@
-interface isEmptyProps {
-    value: string
-}
-const isEmpty = (value: any) => {
+const isEmpty = (value: string) => {
     if (value === null || value === undefined || value.trim() === '') {
         return true
     } else {
