@@ -1,58 +1,99 @@
-import React from 'react';
-import styled from 'styled-components';
-import withLayout from '../../assets/withLayout';
+import React from 'react'
+import { styled } from 'styled-components'
+import { withLayout } from '../../../../utils/src/index'
 
-interface LinkProps extends React.LinkHTMLAttributes<HTMLAnchorElement> {
-  children: React.ReactNode;
-  startAdornment?: React.ReactNode;
-  endAdornment?: React.ReactNode;
-  variant?: 'filled' | 'outlined' | 'transparent' | 'icon' | 'text';
-  notched?: 'true' | 'false';
+interface ModLinkProps {
+    children: React.ReactNode
+    startAdornment?: React.ReactNode
+    endAdornment?: React.ReactNode
+    variant?: 'filled' | 'outlined' | 'transparent' | 'icon' | 'inline'
+    notched?: boolean //works only on variant filled and outlined
 }
 
-// Define which props should be forwarded to the DOM
-const forwardProps = (prop: string) => !['variant', 'notched'].includes(prop);
+const forwardProps = (prop: string) => !['variant', 'notched'].includes(prop)
 
 const ModLink = styled.a.withConfig({
-  shouldForwardProp: (prop) => forwardProps(prop)
-})<LinkProps>`
-  background-color: ${props => 
-    props.variant === "filled" ? ({theme}) => theme.color.primary : 
-    props.variant === "outlined" ? ({theme}) => theme.color.transparent : 
-    props.variant === "icon" ? ({theme}) => theme.color.transparent :
-    props.variant === "text" ? ({theme}) => theme.color.transparent :
-    props.variant === "transparent" ? ({theme}) => theme.color.transparent :
-    ({theme}) => theme.color.primary
-  };
-  clip-path: ${props => 
-    props.notched === "true" ? ({theme}) => theme.notched.secondary : 
-    ({theme}) => theme.style.none
-  };
-  width: fit-content;
-  max-width: fit-content;
-  font-family: ${({theme}) => theme.font.primary};
-  text-transform: ${props => props.variant === "filled" ? "uppercase" : props.variant === "outlined" ? "uppercase" : props.variant === "transparent"? "uppercase" : ""};
-  text-decoration: none;
-  padding: ${props => 
-    props.variant === "filled" ? ({theme}) => theme.spacing.dense : 
-    props.variant === "outlined" ? ({theme}) => theme.spacing.dense : 
-    ({theme}) => theme.style.none
-  };
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  display: ${props => props.variant === "text" ? "" : "flex"};
-  gap: ${({theme}) => theme.spacing.udense};
-  align-items: center;
-  justify-content: ${props => 
-    props.variant === "outlined" ? "center" : "left"
-  };
-  border: ${(({theme}) => theme.style.none)};
-  ${props => props.variant === "outlined" && `
+    shouldForwardProp: prop => forwardProps(prop),
+})<ModLinkProps>`
+    background-color: ${props =>
+        props.variant === 'filled'
+            ? props.theme.color.primary
+            : props.variant === 'outlined'
+              ? props.theme.color.transparent
+              : props.variant === 'transparent'
+                ? props.theme.color.transparent
+                : props.variant === 'icon'
+                  ? props.theme.color.transparent
+                  : props.variant === 'inline'
+                    ? props.theme.color.transparent
+                    : props.theme.color.primary};
+    ${props =>
+        props.variant === 'filled' &&
+        props.notched &&
+        `
+        clip-path: polygon(8px 0%, 100% 0%, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0% 100%, 0% 8px, 8px 0%);
+    `}
+    width: fit-content;
+    max-width: fit-content;
+    font-family: ${props => props.theme.font.primary};
+    font-size: ${props =>
+        props.variant === 'transparent'
+            ? props.theme.fs.sm
+            : props.variant === 'inline'
+              ? props.theme.fs.md
+              : props.theme.fs.xsm};
+    font-weight: ${props =>
+        props.variant === 'inline'
+            ? props.theme.fw.semibold
+            : props.theme.fw.medium};
+    color: ${props =>
+        props.variant === 'filled'
+            ? props.theme.color.white
+            : props.variant === 'outlined'
+              ? props.theme.color.primary
+              : props.variant === 'transparent'
+                ? props.theme.color.primary
+                : props.variant === 'inline'
+                  ? props.theme.color.primary
+                  : ''};
+    text-transform: ${props =>
+        props.variant === 'filled'
+            ? 'uppercase'
+            : props.variant === 'outlined'
+              ? 'uppercase'
+              : props.variant === 'transparent'
+                ? 'uppercase'
+                : 'none'};
+    text-decoration: none;
+    padding: ${props =>
+        props.variant === 'filled'
+            ? props.theme.spacing.dense
+            : props.variant === 'outlined'
+              ? props.theme.spacing.dense
+              : 'none'};
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    display: ${props => (props.variant === 'inline' ? 'inline' : 'flex')};
+    gap: ${props => props.theme.spacing.udense};
+    align-items: center;
+    justify-content: ${props =>
+        props.variant === 'outlined' ? 'center' : 'left'};
+    border: none;
+    ${props =>
+        props.variant === 'outlined' &&
+        !props.notched &&
+        `
+        border: 1px solid ${props.theme.color.primary};
+    `};
+    ${props =>
+        props.variant === 'outlined' &&
+        props.notched &&
+        `
     &::before {
       content: '';
       background-color: ${props.theme.color.primary};
-      clip-path: ${props.theme.notched.primary};
+      clip-path: polygon(8px 0%,100% 0%,100% calc(100% - 8px),calc(100% - 8px) 100%,0% 100%,0% 8px,8px 0%,9.9px 0px,1px 8px,1px calc(100% - 1px),calc(100% - 8px) calc(100% - 1px),calc(100% - 1px) calc(100% - 8px),calc(100% - 1px) 1px,7px 1px);
       position: absolute;
       top: none;
       left: none;
@@ -60,85 +101,30 @@ const ModLink = styled.a.withConfig({
       height: 100%;
     }
   `};
-  &:hover {
-    opacity: ${({theme}) => theme.opacity.medium};
-  }
-`;
-
-const Link: React.FC<LinkProps> = ({ children, startAdornment, endAdornment, ...props }) => {
-  return (
-    <ModLink {...props}>{startAdornment}{children}{endAdornment}</ModLink>
-  );
+    &:hover {
+        opacity: 0.5;
+    }
+`
+const Link = ({
+    children,
+    startAdornment,
+    endAdornment,
+    variant,
+    notched,
+    ...props
+}: ModLinkProps) => {
+    return (
+        <ModLink
+            variant={variant ? variant : 'filled'}
+            notched={notched === false ? false : true}
+            {...props}
+            data-test="link"
+        >
+            {startAdornment}
+            {children}
+            {endAdornment}
+        </ModLink>
+    )
 }
 
-export default withLayout(Link);
-
-
-// import React from 'react'
-// import {styled} from 'styled-components'
-// import withLayout from '../../assets/withLayout'
-
-// interface LinkProps extends React.LinkHTMLAttributes<HTMLAnchorElement> {
-//   children: React.ReactNode;
-//   startAdornment?: React.ReactNode;
-//   endAdornment?: React.ReactNode;
-//   variant?: 'filled' | 'outlined' | 'transparent' | 'icon' | 'text';
-//   notched?: 'true' | 'false';
-// }
-
-// const ModLink = styled.a<LinkProps>`
-  // background-color: ${props => 
-  //   props.variant === "filled" ? ({theme}) => theme.color.primary : 
-  //   props.variant === "outlined" ? ({theme}) => theme.color.transparent : 
-  //   props.variant === "icon" ? ({theme}) => theme.color.transparent :
-  //   props.variant === "text" ? ({theme}) => theme.color.transparent :
-  //   props.variant === "transparent" ? ({theme}) => theme.color.transparent :
-  //   ({theme}) => theme.color.primary
-  // };
-  // clip-path: ${props => 
-  //   props.notched === "true" ? ({theme}) => theme.notched.secondary : 
-  //   ({theme}) => theme.style.none
-  // };
-  // width: fit-content;
-  // max-width: fit-content;
-  // font-family: ${({theme}) => theme.font.primary};
-  // text-transform: ${props => props.variant === "filled" ? "uppercase" : props.variant === "outlined" ? "uppercase" : props.variant === "transparent"? "uppercase" : ""};
-  // text-decoration: none;
-  // padding: ${props => 
-  //   props.variant === "filled" ? ({theme}) => theme.spacing.dense : 
-  //   props.variant === "outlined" ? ({theme}) => theme.spacing.dense : 
-  //   ({theme}) => theme.style.none
-  // };
-  // cursor: pointer;
-  // position: relative;
-  // overflow: hidden;
-  // display: ${props => props.variant === "text" ? "" : "flex"};
-  // gap: ${({theme}) => theme.spacing.udense};
-  // align-items: center;
-  // justify-content: ${props => 
-  //   props.variant === "outlined" ? "center" : "left"
-  // };
-  // border: ${(({theme}) => theme.style.none)};
-  // ${props => props.variant === "outlined" && `
-  //   &::before {
-  //     content: '';
-  //     background-color: ${props.theme.color.primary};
-  //     clip-path: ${props.theme.notched.primary};
-  //     position: absolute;
-  //     top: none;
-  //     left: none;
-  //     width: 100%;
-  //     height: 100%;
-  //   }
-  // `};
-  // &:hover {
-  //   opacity: ${({theme}) => theme.opacity.medium};
-  // }
-// `
-// const Link: React.FC<LinkProps> = ({ children, startAdornment, endAdornment, variant, notched, ...props }) => {
-//   return (
-//     <ModLink variant = {variant} notched = {notched} {...props}>{startAdornment}{children}{endAdornment}</ModLink>
-//   )
-// }
-
-// export default withLayout(Link)
+export default withLayout(Link)

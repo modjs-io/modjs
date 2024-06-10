@@ -1,34 +1,33 @@
 import React from 'react'
-import {styled} from 'styled-components'
+import { styled } from 'styled-components'
+import { withLayout } from '../../../../utils/src/index'
+import { IconProps } from '../../utils/IconProps'
 
-type IconProps = React.SVGAttributes<SVGSVGElement> & {
-  fill?: string
-  height?: string
-  width?: string
-}
+const ModPythonIcon = styled.svg<IconProps>`
+    height: ${props =>
+        props.height ? props.height : props.theme.icons.height.lg};
+    width: ${props => (props.width ? props.width : props.theme.icons.width.lg)};
+`
 
-const ModPythonIcon = styled.svg`
-  fill: ${props => props.fill ? props.fill : ({theme}) => theme.color.primary};
-  height: ${props => props.height ? props.height : ({theme}) => theme.icons.height.lg};
-  width: ${props => props.width ? props.width : ({theme}) => theme.icons.width.lg};
-`;
-
-const PythonIcon = ({  fill, height, width, ...props  }: IconProps) => {
-  return (
-    <ModPythonIcon 
-      {...props} 
-      xmlns='http://www.w3.org/2000/svg' 
-      viewBox='0 0 640 640'
-      height = {height}
-      width = {width}
-      >
-      <title>Python Icon</title>
-      <metadata>Created by Prashan Pudasaini on Thursday, January 4th, 2024 @ fullstackpro.io</metadata>
-      <path
-        fill='transparent'
-        opacity='1.000000'
-        stroke='none'
-        d='M431.000000,641.000000 
+const PythonIcon = ({ height, width, ...props }: IconProps) => {
+    return (
+        <ModPythonIcon
+            {...props}
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 640 640"
+            height={height}
+            width={width}
+        >
+            <title>Python Icon</title>
+            <metadata>
+                Created by Prashan Pudasaini on Thursday, January 4th, 2024 @
+                fullstackpro.io
+            </metadata>
+            <path
+                fill="transparent"
+                opacity="1.000000"
+                stroke="none"
+                d="M431.000000,641.000000 
       C287.333374,641.000000 144.166718,641.000000 1.000058,641.000000 
       C1.000038,427.666718 1.000038,214.333466 1.000019,1.000144 
       C214.333237,1.000096 427.666473,1.000096 640.999756,1.000048 
@@ -92,13 +91,13 @@ const PythonIcon = ({  fill, height, width, ...props  }: IconProps) => {
       C202.797638,424.833313 203.076004,466.990021 202.948273,509.144592 
       C202.915085,520.095398 207.324234,529.150024 214.446686,536.795471 
       C226.262497,549.478760 241.822601,555.684265 258.162933,559.948486 
-      C279.882812,565.616516 302.130249,566.864746 325.455872,567.000000 z'
-      />
-      <path
-        fill='#387EB8'
-        opacity='1.000000'
-        stroke='none'
-        d='M421.924316,100.059540 
+      C279.882812,565.616516 302.130249,566.864746 325.455872,567.000000 z"
+            />
+            <path
+                fill="#387EB8"
+                opacity="1.000000"
+                stroke="none"
+                d="M421.924316,100.059540 
       C433.048248,109.613693 439.277435,120.853027 439.133881,135.817062 
       C438.743774,176.476013 438.966064,217.141220 439.018219,257.803833 
       C439.036743,272.218597 434.595764,285.096680 424.754517,295.510284 
@@ -131,13 +130,13 @@ const PythonIcon = ({  fill, height, width, ...props  }: IconProps) => {
       C246.157333,150.016342 256.761932,152.960052 266.574615,148.024841 
       C275.872894,143.348343 280.428925,132.618988 277.322693,122.713318 
       C273.606201,110.861458 260.898773,104.676659 249.346741,109.097137 
-      C237.141571,113.767563 232.470535,127.062599 238.973282,140.363052 z'
-      />
-      <path
-        fill='#FFC331'
-        opacity='1.000000'
-        stroke='none'
-        d='M324.962311,567.000000 
+      C237.141571,113.767563 232.470535,127.062599 238.973282,140.363052 z"
+            />
+            <path
+                fill="#FFC331"
+                opacity="1.000000"
+                stroke="none"
+                d="M324.962311,567.000000 
       C302.130249,566.864746 279.882812,565.616516 258.162933,559.948486 
       C241.822601,555.684265 226.262497,549.478760 214.446686,536.795471 
       C207.324234,529.150024 202.915085,520.095398 202.948273,509.144592 
@@ -172,31 +171,31 @@ const PythonIcon = ({  fill, height, width, ...props  }: IconProps) => {
       C365.019348,501.546265 362.092957,510.770538 364.580170,519.063171 
       C367.228516,527.893005 374.991913,533.906860 384.105347,534.188293 
       C393.447937,534.476685 401.576324,529.216370 404.860901,520.756104 
-      C408.356049,511.753479 405.686279,502.607269 396.997833,495.377563 z'
-      />
-      <path
-        fill='#FDFDFE'
-        opacity='1.000000'
-        stroke='none'
-        d='M238.779999,140.043091 
+      C408.356049,511.753479 405.686279,502.607269 396.997833,495.377563 z"
+            />
+            <path
+                fill="#FDFDFE"
+                opacity="1.000000"
+                stroke="none"
+                d="M238.779999,140.043091 
       C232.470535,127.062599 237.141571,113.767563 249.346741,109.097137 
       C260.898773,104.676659 273.606201,110.861458 277.322693,122.713318 
       C280.428925,132.618988 275.872894,143.348343 266.574615,148.024841 
-      C256.761932,152.960052 246.157333,150.016342 238.779999,140.043091 z'
-      />
-      <path
-        fill='#FFFEFC'
-        opacity='1.000000'
-        stroke='none'
-        d='M397.290405,495.600464 
+      C256.761932,152.960052 246.157333,150.016342 238.779999,140.043091 z"
+            />
+            <path
+                fill="#FFFEFC"
+                opacity="1.000000"
+                stroke="none"
+                d="M397.290405,495.600464 
       C405.686279,502.607269 408.356049,511.753479 404.860901,520.756104 
       C401.576324,529.216370 393.447937,534.476685 384.105347,534.188293 
       C374.991913,533.906860 367.228516,527.893005 364.580170,519.063171 
       C362.092957,510.770538 365.019348,501.546265 371.824310,496.228851 
-      C379.038177,490.591980 388.141602,490.284119 397.290405,495.600464 z'
-      />
-    </ModPythonIcon>
-  )
+      C379.038177,490.591980 388.141602,490.284119 397.290405,495.600464 z"
+            />
+        </ModPythonIcon>
+    )
 }
 
-export default PythonIcon
+export default withLayout(PythonIcon)

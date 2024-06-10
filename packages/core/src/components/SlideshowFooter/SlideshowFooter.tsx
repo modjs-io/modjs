@@ -1,22 +1,21 @@
 import React from 'react'
-import {styled} from 'styled-components'
-import withLayout from '../../assets/withLayout'
+import { styled } from 'styled-components'
+import { withLayout } from '../../../../utils/src/index'
 
-interface SlideshowFooterProps {
-    children: React.ReactNode[]
+interface ModSlideshowFooterProps extends React.HTMLAttributes<HTMLDivElement> {
+    children: React.ReactNode
 }
 
-const ModSlideshowExcerpt = styled.div<SlideshowFooterProps>`
-
+const ModSlideshowFooter = styled.div<ModSlideshowFooterProps>`
+    text-align: center;
 `
 
-const SlideshowFooter = ({ children, ...props }: SlideshowFooterProps) => {
-
-  return (
-    <ModSlideshowExcerpt {...props}>
-        {children}
-    </ModSlideshowExcerpt>
-  )
+const SlideshowFooter = ({ children, ...props }: ModSlideshowFooterProps) => {
+    return (
+        <ModSlideshowFooter {...props} data-test="slideshow-footer">
+            {children}
+        </ModSlideshowFooter>
+    )
 }
 
 export default withLayout(SlideshowFooter)

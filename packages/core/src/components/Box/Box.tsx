@@ -1,20 +1,23 @@
 import React from 'react'
-import {styled} from 'styled-components'
-import withLayout from '../../assets/withLayout'
+import { styled } from 'styled-components'
+import { withLayout } from '../../../../utils/src/index'
 
-interface BoxProps {
-  children: React.ReactNode
+interface ModBoxProps extends React.HTMLAttributes<HTMLDivElement> {
+    children: React.ReactNode
 }
 
 const ModBox = styled.div`
-
+    margin: 0;
+    padding: 0;
+    display: block;
 `
 
-const Box: React.FC<BoxProps> = ({ children, ...props }) => {
-  return (
-    <ModBox {...props}>{children}</ModBox>
-  )
+const Box = ({ children, ...props }: ModBoxProps) => {
+    return (
+        <ModBox {...props} data-test="box">
+            {children}
+        </ModBox>
+    )
 }
 
 export default withLayout(Box)
-

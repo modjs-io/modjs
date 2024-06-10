@@ -1,6 +1,8 @@
 node_modules
+coverage
+package-lock.json
+.vscode
 .DS_Store
 *.DS_Store
 build
-dist
 types

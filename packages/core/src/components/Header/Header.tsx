@@ -1,21 +1,22 @@
 import React from 'react'
-import withLayout from '../../assets/withLayout'
-import {styled} from 'styled-components'
+import { withLayout } from '../../../../utils/src/index'
+import { styled } from 'styled-components'
 
-interface HeaderProps{
-  children: React.ReactNode
+interface ModHeaderProps extends React.HTMLAttributes<HTMLElement> {
+    children: React.ReactNode
 }
 
-const ModHeader = styled.header<HeaderProps>`
-
+const ModHeader = styled.header<ModHeaderProps>`
+    margin: 0;
+    padding: 0;
 `
 
-const Header = ({ children, ...props }: HeaderProps) => {
-  return (
-    <ModHeader {...props}>
-      {children}
-    </ModHeader>
-  )
+const Header = ({ children, ...props }: ModHeaderProps) => {
+    return (
+        <ModHeader {...props} data-test="header">
+            {children}
+        </ModHeader>
+    )
 }
 
 export default withLayout(Header)

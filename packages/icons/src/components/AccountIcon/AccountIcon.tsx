@@ -1,34 +1,33 @@
 import React from 'react'
-import {styled} from 'styled-components'
+import { styled } from 'styled-components'
+import { withLayout } from '../../../../utils/src/index'
+import { IconProps } from '../../utils/IconProps'
 
-type IconProps = React.SVGAttributes<SVGSVGElement> & {
-  fill?: string
-  height?: string
-  width?: string
-}
+const ModAccountIcon = styled.svg<IconProps>`
+    fill: ${props => (props.fill ? props.fill : props.theme.color.primary)};
+    height: ${props =>
+        props.height ? props.height : props.theme.icons.height.sm};
+    width: ${props => (props.width ? props.width : props.theme.icons.width.sm)};
+`
 
-const ModAccountIcon = styled.svg`
-  fill: ${props => props.fill ? props.fill : ({theme}) => theme.color.primary};
-  height: ${props => props.height ? props.height : ({theme}) => theme.icons.height.sm};
-  width: ${props => props.width ? props.width : ({theme}) => theme.icons.width.sm};
-`;
-
-const AccountIcon = ({ fill, height, width, ...props  }: IconProps) => {
-  return (
-    <ModAccountIcon
-      {...props}
-      version='1.0'
-      xmlns='http://www.w3.org/2000/svg'
-      viewBox='0 0 900.000000 900.000000'
-      preserveAspectRatio='xMidYMid meet'
-      height = {height}
-      width = {width}
-    >
-      <title>Account Outlined Icon</title>
-      <metadata>Created by Prashan Pudasaini on Thursday, January 4th, 2024 @ fullstackpro.io</metadata>
-      <g transform='translate(0.000000,900.000000) scale(0.100000,-0.100000)' fill={fill} stroke='none'>
-        <path
-          d='M4180 8404 c-169 -32 -335 -78 -425 -118 -96 -43 -236 -113 -273
+const AccountIcon = ({ fill, height, width, ...props }: IconProps) => {
+    return (
+        <ModAccountIcon
+            {...props}
+            version="1.0"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 900.000000 900.000000"
+            preserveAspectRatio="xMidYMid meet"
+            height={height}
+            width={width}
+        >
+            <g
+                transform="translate(0.000000,900.000000) scale(0.100000,-0.100000)"
+                fill={fill}
+                stroke="none"
+            >
+                <path
+                    d="M4180 8404 c-169 -32 -335 -78 -425 -118 -96 -43 -236 -113 -273
 -138 -24 -15 -45 -28 -46 -28 -2 0 -28 -16 -57 -36 -191 -128 -412 -352 -535
 -544 -40 -63 -52 -83 -61 -100 -4 -8 -19 -35 -33 -60 -65 -112 -158 -371 -189
 -525 -49 -241 -49 -550 1 -795 28 -140 93 -328 165 -475 37 -76 44 -88 86
@@ -45,10 +44,10 @@ const AccountIcon = ({ fill, height, width, ...props  }: IconProps) => {
 30 -3 0 -27 17 -52 38 -204 163 -354 357 -441 567 -18 44 -39 95 -47 113 -8
 18 -14 42 -14 53 0 11 -5 29 -10 39 -15 28 -50 275 -50 355 0 118 32 295 82
 450 31 99 122 276 188 366 151 206 407 405 625 485 123 45 236 75 315 85 111
-13 418 3 490 -16z'
-        />
-        <path
-          d='M2685 3904 c-197 -34 -374 -79 -487 -123 -87 -34 -119 -47 -168 -69
+13 418 3 490 -16z"
+                />
+                <path
+                    d="M2685 3904 c-197 -34 -374 -79 -487 -123 -87 -34 -119 -47 -168 -69
 -287 -127 -514 -284 -746 -516 -208 -208 -363 -423 -476 -660 -21 -45 -44 -90
 -50 -100 -6 -11 -14 -31 -18 -45 -5 -14 -18 -51 -30 -81 -62 -162 -96 -295
 -135 -526 -23 -141 -20 -456 5 -554 51 -193 156 -358 302 -475 115 -91 203
@@ -61,11 +60,11 @@ const AccountIcon = ({ fill, height, width, ...props  }: IconProps) => {
 -29 -53 c-34 -60 -85 -111 -148 -144 l-43 -23 -3145 0 -3145 0 -43 23 c-63 33
 -114 84 -148 144 l-29 53 1 180 c1 227 26 355 121 619 74 206 251 475 433 656
 206 207 518 401 735 459 17 5 41 13 55 19 61 25 275 70 355 76 28 1 802 2
-1720 2 1583 -1 1674 -2 1745 -19z'
-        />
-      </g>
-    </ModAccountIcon>
-  )
+1720 2 1583 -1 1674 -2 1745 -19z"
+                />
+            </g>
+        </ModAccountIcon>
+    )
 }
 
-export  default AccountIcon
+export default withLayout(AccountIcon)

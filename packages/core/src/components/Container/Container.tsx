@@ -1,34 +1,40 @@
 import React from 'react'
-import {styled} from 'styled-components'
-import withLayout from '../../assets/withLayout'
+import { styled } from 'styled-components'
+import { withLayout } from '../../../../utils/src/index'
 
-interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
-  children: React.ReactNode
-  fluid?: 'true' | 'false'
+interface ModContainerProps extends React.HTMLAttributes<HTMLDivElement> {
+    children?: React.ReactNode
+    fluid?: boolean
 }
 
-const forwardProps = (prop: string) => !['fluid'].includes(prop);
+const forwardProps = (prop: string) => !['fluid'].includes(prop)
 
 const ModContainer = styled.div.withConfig({
-  shouldForwardProp: (prop) => forwardProps(prop)
-})<ContainerProps>`
-  max-width: ${props => props.fluid === 'true' ? '' : '1280px'};
-  margin: ${props => props.fluid === 'true' ? '' : 'auto'};
-  padding-right: ${({theme}) => theme.spacing.mwide};
-  padding-left: ${({theme}) => theme.spacing.mwide};
-  @media (max-width: 1280px) {
-    padding-right: ${({theme}) => theme.spacing.wide};
-    padding-left: ${({theme}) => theme.spacing.wide};
-  };
-  @media (max-width: 768px) {
-    padding-right: ${({theme}) => theme.spacing.normal};
-    padding-left: ${({theme}) => theme.spacing.normal};
-  };
+    shouldForwardProp: prop => forwardProps(prop),
+})<ModContainerProps>`
+    ${props =>
+        !props.fluid &&
+        `
+            max-width: 1280px;
+            margin: auto;
+    `};
+    padding-right: ${props => props.theme.spacing.mwide};
+    padding-left: ${props => props.theme.spacing.mwide};
+    @media (max-width: 1280px) {
+        padding-right: ${props => props.theme.spacing.wide};
+        padding-left: ${props => props.theme.spacing.wide};
+    }
+    @media (max-width: 768px) {
+        padding-right: ${props => props.theme.spacing.xdense};
+        padding-left: ${props => props.theme.spacing.xdense};
+    }
 `
-const Container: React.FC<ContainerProps> = ({ children, ...props }) => {
-  return (
-    <ModContainer {...props}>{children}</ModContainer>
-  )
+const Container = ({ children, ...props }: ModContainerProps) => {
+    return (
+        <ModContainer {...props} data-test="container">
+            {children}
+        </ModContainer>
+    )
 }
 
 export default withLayout(Container)

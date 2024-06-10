@@ -1,34 +1,33 @@
 import React from 'react'
-import {styled} from 'styled-components'
+import { styled } from 'styled-components'
+import { withLayout } from '../../../../utils/src/index'
+import { IconProps } from '../../utils/IconProps'
 
-type IconProps = React.SVGAttributes<SVGSVGElement> & {
-  fill?: string
-  height?: string
-  width?: string
-}
-
-const ModSuccessIcon = styled.svg`
-  fill: ${props => props.fill ? props.fill : ({theme}) => theme.color.primary};
-  height: ${props => props.height ? props.height : ({theme}) => theme.icons.height.sm};
-  width: ${props => props.width ? props.width : ({theme}) => theme.icons.width.sm};
-`;
+const ModSuccessIcon = styled.svg<IconProps>`
+    fill: ${props => (props.fill ? props.fill : props.theme.color.primary)};
+    height: ${props =>
+        props.height ? props.height : props.theme.icons.height.sm};
+    width: ${props => (props.width ? props.width : props.theme.icons.width.sm)};
+`
 
 const SuccessIcon = ({ fill, height, width, ...props }: IconProps) => {
-  return (
-    <ModSuccessIcon
-      {...props}
-      version='1.0'
-      xmlns='http://www.w3.org/2000/svg'
-      viewBox='0 0 900.000000 900.000000'
-      preserveAspectRatio='xMidYMid meet'
-      height = {height}
-      width = {width}
-    >
-      <title>Success Outlined Icon</title>
-      <metadata>Created by Prashan Pudasaini on Thursday, January 4th, 2024 @ fullstackpro.io</metadata>
-      <g transform='translate(0.000000,900.000000) scale(0.100000,-0.100000)' fill={fill} stroke='none'>
-        <path
-          d='M8138 7921 c-118 -61 -193 -103 -238 -130 -19 -11 -42 -24 -50 -28
+    return (
+        <ModSuccessIcon
+            {...props}
+            version="1.0"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 900.000000 900.000000"
+            preserveAspectRatio="xMidYMid meet"
+            height={height}
+            width={width}
+        >
+            <g
+                transform="translate(0.000000,900.000000) scale(0.100000,-0.100000)"
+                fill={fill}
+                stroke="none"
+            >
+                <path
+                    d="M8138 7921 c-118 -61 -193 -103 -238 -130 -19 -11 -42 -24 -50 -28
 -18 -8 -158 -89 -180 -103 -8 -6 -24 -14 -35 -19 -11 -5 -37 -21 -58 -35 -21
 -14 -40 -26 -43 -26 -4 0 -25 -13 -48 -28 -22 -15 -48 -31 -56 -35 -8 -4 -28
 -16 -45 -27 -16 -11 -37 -23 -45 -27 -8 -4 -43 -26 -78 -50 -35 -24 -65 -43
@@ -55,10 +54,10 @@ const SuccessIcon = ({ fill, height, width, ...props }: IconProps) => {
 77 10 19 31 52 45 75 15 23 31 49 37 58 8 14 55 89 110 177 6 9 28 43 50 76
 22 33 44 68 50 78 5 9 43 65 84 125 41 59 99 143 130 187 176 255 537 719 801
 1029 216 254 724 784 935 977 147 133 256 230 332 293 90 75 106 95 121 149
-21 77 -19 156 -100 198 -56 29 -88 24 -190 -30z'
-        />
-      </g>
-    </ModSuccessIcon>
-  )
+21 77 -19 156 -100 198 -56 29 -88 24 -190 -30z"
+                />
+            </g>
+        </ModSuccessIcon>
+    )
 }
-export default SuccessIcon
+export default withLayout(SuccessIcon)

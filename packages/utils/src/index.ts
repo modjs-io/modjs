@@ -1,8 +1,6 @@
-import formatEmail from "./functions/formatEmail/formatEmail";
-import formatPhone from "./functions/formatPhone/formatPhone";
-import generateUuid from "./functions/generateUuid/generateUuid";
-import isEmpty from "./functions/isEmpty/isEmpty";
-import validateEmail from "./functions/validateEmail/validateEmail";
-import validatePhone from "./functions/validatePhone/validatePhone";
+import Bob from './assets/images/bob.jpeg'
+import ModTheme from './assets/themes/ModTheme'
+import useMediaQuery from './hooks/useMediaQuery/useMediaQuery'
+import withLayout from './components/withLayout/withLayout'
 
-export {formatEmail, formatPhone, generateUuid, isEmpty, validateEmail, validatePhone}
+export { Bob, ModTheme, useMediaQuery, withLayout }

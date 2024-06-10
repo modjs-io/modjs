@@ -1,37 +1,35 @@
 import React from 'react'
-import {styled} from 'styled-components'
+import { styled } from 'styled-components'
+import { withLayout } from '../../../../utils/src/index'
+import { IconProps } from '../../utils/IconProps'
 
-type IconProps = React.SVGAttributes<SVGSVGElement> & {
-  fill?: string
-  height?: string
-  width?: string
-}
+const ModXIcon = styled.svg<IconProps>`
+    height: ${props =>
+        props.height ? props.height : props.theme.icons.height.sm};
+    width: ${props => (props.width ? props.width : props.theme.icons.width.sm)};
+    background-color: #000000;
+    padding: ${props => props.theme.spacing.dense};
+    border-radius: 0.125em;
+`
 
-const ModXIcon = styled.svg`
-  fill: ${({theme}) => theme.color.white};
-  height: ${props => props.height ? props.height : ({theme}) => theme.icons.height.sm};
-  width: ${props => props.width ? props.width : ({theme}) => theme.icons.width.sm};
-  background-color: #0f1419;
-  padding: ${({theme}) => theme.spacing.dense};
-  border-radius: 0.125em;
-`;
-
-const XIcon = ({ fill, height, width, ...props }: IconProps) => {
-  return (
-    <ModXIcon
-      {...props}
-      version='1.0'
-      xmlns='http://www.w3.org/2000/svg'
-      viewBox='0 0 900.000000 900.000000'
-      preserveAspectRatio='xMidYMid meet'
-      height = {height}
-      width = {width}
-    >
-      <title>X Icon</title>
-      <metadata>Created by Prashan Pudasaini on Thursday, January 4th, 2024 @ fullstackpro.io</metadata>
-      <g transform='translate(0.000000,900.000000) scale(0.100000,-0.100000)' fill={fill} stroke='none'>
-        <path
-          d='M100 8984 c0 -9 21 -46 48 -83 26 -36 52 -74 57 -83 6 -9 33 -50 61-90 28 -40 77 -111 109 -158 60 -87 126 -184 224 -325 30 -44 87 -127 126-185 39 -58 87 -127 106 -155 48 -67 137 -197 224 -325 40 -58 92 -134 117-170 84 -121 141 -205 213 -310 40 -58 92 -134 117 -170 25 -36 71 -103 103-150 190 -277 213 -310 324 -470 24 -36 77 -112 116 -170 39 -58 96 -140 126
+const XIcon = ({ height, width, ...props }: IconProps) => {
+    return (
+        <ModXIcon
+            {...props}
+            version="1.0"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 900.000000 900.000000"
+            preserveAspectRatio="xMidYMid meet"
+            height={height}
+            width={width}
+        >
+            <g
+                transform="translate(0.000000,900.000000) scale(0.100000,-0.100000)"
+                fill="#ffffff"
+                stroke="none"
+            >
+                <path
+                    d="M100 8984 c0 -9 21 -46 48 -83 26 -36 52 -74 57 -83 6 -9 33 -50 61-90 28 -40 77 -111 109 -158 60 -87 126 -184 224 -325 30 -44 87 -127 126-185 39 -58 87 -127 106 -155 48 -67 137 -197 224 -325 40 -58 92 -134 117-170 84 -121 141 -205 213 -310 40 -58 92 -134 117 -170 25 -36 71 -103 103-150 190 -277 213 -310 324 -470 24 -36 77 -112 116 -170 39 -58 96 -140 126
 -183 30 -43 59 -86 64 -95 6 -9 28 -41 50 -72 22 -30 85 -120 139 -200 54 -80
 138 -203 187 -275 50 -71 124 -179 165 -240 41 -60 100 -146 131 -190 31 -44
 89 -127 128 -185 69 -101 143 -209 230 -335 76 -109 178 -259 218 -318 l38
@@ -114,11 +112,11 @@ c81 95 155 181 165 192 10 11 54 63 99 115 81 95 109 128 194 225 25 28 56 65
 135 -27 39 -90 129 -140 200 -50 72 -112 159 -138 195 -65 91 -199 283 -296
 425 -45 66 -94 136 -109 155 -15 19 -62 87 -105 150 -43 63 -97 140 -119 170
 -23 31 -45 63 -51 72 -19 31 -90 133 -147 211 -32 43 -58 80 -58 83 0 4 -14
-24 -31 45 -23 29 -28 43 -20 52 8 10 130 13 587 13 l576 -1 24 -30z'
-        />
-      </g>
-    </ModXIcon>
-  )
+24 -31 45 -23 29 -28 43 -20 52 8 10 130 13 587 13 l576 -1 24 -30z"
+                />
+            </g>
+        </ModXIcon>
+    )
 }
 
-export default XIcon
+export default withLayout(XIcon)

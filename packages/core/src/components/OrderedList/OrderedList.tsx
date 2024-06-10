@@ -1,28 +1,34 @@
 import React from 'react'
-import {styled} from 'styled-components'
-import withLayout from '../../assets/withLayout'
+import { styled } from 'styled-components'
+import { withLayout } from '../../../../utils/src/index'
 
-interface OrderedListProps {
-  children: React.ReactNode
-  indent?: 'true' | 'false'
+interface ModOrderedListProps extends React.HTMLAttributes<HTMLOListElement> {
+    children: React.ReactNode
+    indent?: boolean
 }
 
-const forwardProps = (prop: string) => !['indent'].includes(prop);
+const forwardProps = (prop: string) => !['indent'].includes(prop)
 
 const ModOrderedList = styled.ol.withConfig({
-  shouldForwardProp: (prop) => forwardProps(prop)
-})<OrderedListProps>`
-  margin: 0;
-  padding-left: ${props => props.indent === "false" ? "0" : "3em"};
-  padding-right: ${props => props.indent === "false" ? "0" : "3em"};
+    shouldForwardProp: prop => forwardProps(prop),
+})<ModOrderedListProps>`
+    margin: 0;
+    padding-left: ${props => (props.indent ? '3em' : '0')};
+    color: ${props => props.theme.color.dark};
+    font-family: ${props => props.theme.font.primary};
+    font-size: ${props => props.theme.fs.md};
 `
 
-const OrderedList = ({ children, ...props }: OrderedListProps) => {
-  return (
-    <ModOrderedList {...props}>
-      {children}
-    </ModOrderedList>
-  )
+const OrderedList = ({ children, indent, ...props }: ModOrderedListProps) => {
+    return (
+        <ModOrderedList
+            indent={indent === false ? false : true}
+            {...props}
+            data-test="ordered-list"
+        >
+            {children}
+        </ModOrderedList>
+    )
 }
 
 export default withLayout(OrderedList)

@@ -32,6 +32,7 @@ import MobileIcon from './components/MobileIcon/MobileIcon'
 import MobileSettingsIcon from './components/MobileSettingsIcon/MobileSettingsIcon'
 import MongoDbIcon from './components/MongoDbIcon/MongoDbIcon'
 import NodeIcon from './components/NodeIcon/NodeIcon'
+import NotVisibleIcon from './components/NotVisibleIcon/NotVisibleIcon'
 import PasswordIcon from './components/PasswordIcon/PasswordIcon'
 import PilotProIcon from './components/PilotProIcon/PilotProIcon'
 import PlayIcon from './components/PlayIcon/PlayIcon'
@@ -48,6 +49,7 @@ import SuccessIcon from './components/SuccessIcon/SuccessIcon'
 import SwiftIcon from './components/SwiftIcon/SwiftIcon'
 import TerraformIcon from './components/TerraformIcon/TerraformIcon'
 import TypeScriptIcon from './components/TypescriptIcon/TypeScriptIcon'
+import VisibleIcon from './components/VisibleIcon/VisibleIcon'
 import WorldWideWebIcon from './components/WorldWideWebIcon/WorldWideWebIcon'
 import XIcon from './components/XIcon/XIcon'
 import YoutubeIcon from './components/YoutubeIcon/YoutubeIcon'
@@ -82,11 +84,12 @@ export {
     LinkedInIcon,
     LoginIcon,
     MailIcon,
-    MenuIcon, 
+    MenuIcon,
     MobileIcon,
     MobileSettingsIcon,
     MongoDbIcon,
     NodeIcon,
+    NotVisibleIcon,
     PasswordIcon,
     PilotProIcon,
     PlayIcon,
@@ -103,7 +106,8 @@ export {
     SwiftIcon,
     TerraformIcon,
     TypeScriptIcon,
+    VisibleIcon,
     WorldWideWebIcon,
     XIcon,
-    YoutubeIcon
+    YoutubeIcon,
 }

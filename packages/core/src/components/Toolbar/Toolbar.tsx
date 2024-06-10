@@ -1,25 +1,25 @@
-import React, {useState, useEffect} from 'react'
-import {styled} from 'styled-components'
-import withLayout from '../../assets/withLayout'
+import React from 'react'
+import { styled } from 'styled-components'
+import { withLayout } from '../../../../utils/src/index'
 
-interface ToolbarProps {
-  children: React.ReactNode
+interface ModToolbarProps extends React.HTMLAttributes<HTMLElement> {
+    children: React.ReactNode
 }
 
-const ModToolbar = styled.nav<ToolbarProps>`
-    background-color: ${({theme}) => theme.color.white};
+const ModToolbar = styled.nav<ModToolbarProps>`
+    background-color: ${props => props.theme.color.white};
     padding-top: 1em;
     @media (max-width: 768px) {
-      display: none;
+        display: none;
     }
 `
 
-const Toolbar = ({ children, ...props }: ToolbarProps) => {
-  return (
-      <ModToolbar {...props}>
-        {children}
-      </ModToolbar>
-  )
+const Toolbar = ({ children, ...props }: ModToolbarProps) => {
+    return (
+        <ModToolbar {...props} data-test="toolbar">
+            {children}
+        </ModToolbar>
+    )
 }
 
 export default withLayout(Toolbar)

@@ -1,34 +1,33 @@
 import React from 'react'
-import {styled} from 'styled-components'
+import { styled } from 'styled-components'
+import { withLayout } from '../../../../utils/src/index'
+import { IconProps } from '../../utils/IconProps'
 
-type IconProps = React.SVGAttributes<SVGSVGElement> & {
-  fill?: string
-  height?: string
-  width?: string
-}
+const ModMongoDbIcon = styled.svg<IconProps>`
+    height: ${props =>
+        props.height ? props.height : props.theme.icons.height.lg};
+    width: ${props => (props.width ? props.width : props.theme.icons.width.lg)};
+`
 
-const ModMongoDbIcon = styled.svg`
-  fill: ${props => props.fill ? props.fill : ({theme}) => theme.color.primary};
-  height: ${props => props.height ? props.height : ({theme}) => theme.icons.height.lg};
-  width: ${props => props.width ? props.width : ({theme}) => theme.icons.width.lg};
-`;
-
-const MongoDbIcon = ({ fill, height, width, ...props }: IconProps) => {
-  return (
-    <ModMongoDbIcon 
-    {...props} 
-    xmlns='http://www.w3.org/2000/svg' 
-    viewBox='0 0 242 516'
-    height = {height}
-    width = {width}
-    >
-      <title>MongoDB Icon</title>
-      <metadata>Created by Prashan Pudasaini on Thursday, January 4th, 2024 @ fullstackpro.io</metadata>
-      <path
-        fill='#06232E'
-        opacity='1.000000'
-        stroke='none'
-        d='M131.000000,517.000000 
+const MongoDbIcon = ({ height, width, ...props }: IconProps) => {
+    return (
+        <ModMongoDbIcon
+            {...props}
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 242 516"
+            height={height}
+            width={width}
+        >
+            <title>MongoDB Icon</title>
+            <metadata>
+                Created by Prashan Pudasaini on Thursday, January 4th, 2024 @
+                fullstackpro.io
+            </metadata>
+            <path
+                fill="#06232E"
+                opacity="1.000000"
+                stroke="none"
+                d="M131.000000,517.000000 
       C125.311958,517.000000 119.623917,517.000000 113.468208,516.547729 
       C112.900429,513.605469 112.921982,511.103577 112.680397,508.627350 
       C111.153275,492.974182 109.397560,477.340485 108.133125,461.666779 
@@ -69,13 +68,13 @@ const MongoDbIcon = ({ fill, height, width, ...props }: IconProps) => {
       C121.450012,192.985275 121.137436,193.426239 121.117104,193.880264 
       C120.062332,217.437729 119.058052,240.997482 117.989571,264.554321 
       C117.402992,277.486389 116.644989,290.410767 116.083626,303.343811 
-      C115.010498,328.067169 114.022667,352.794250 112.999420,378.500732 z'
-      />
-      <path
-        fill='transparent'
-        opacity='1.000000'
-        stroke='none'
-        d='M243.000000,239.531342 
+      C115.010498,328.067169 114.022667,352.794250 112.999420,378.500732 z"
+            />
+            <path
+                fill="transparent"
+                opacity="1.000000"
+                stroke="none"
+                d="M243.000000,239.531342 
       C242.348145,234.451157 241.606613,228.911133 241.059753,223.351959 
       C238.503174,197.363083 231.335861,172.627014 221.326233,148.582458 
       C208.009949,116.594864 189.465454,87.763062 168.568054,60.352345 
@@ -87,13 +86,13 @@ const MongoDbIcon = ({ fill, height, width, ...props }: IconProps) => {
       C3.351328,216.843842 2.775498,228.162827 1.269562,239.680695 
       C1.000000,160.381760 1.000000,80.763527 1.000000,1.072645 
       C81.569145,1.072645 162.138367,1.072645 243.000000,1.072645 
-      C243.000000,80.353989 243.000000,159.708328 243.000000,239.531342 z'
-      />
-      <path
-        fill='transparent'
-        opacity='1.000000'
-        stroke='none'
-        d='M131.468658,517.000000 
+      C243.000000,80.353989 243.000000,159.708328 243.000000,239.531342 z"
+            />
+            <path
+                fill="transparent"
+                opacity="1.000000"
+                stroke="none"
+                d="M131.468658,517.000000 
       C132.224197,503.808929 133.529144,490.624603 134.628845,477.423187 
       C135.014679,472.791443 134.410477,468.036041 135.174362,463.491058 
       C135.709106,460.309387 137.100510,456.689514 139.318207,454.477142 
@@ -102,13 +101,13 @@ const MongoDbIcon = ({ fill, height, width, ...props }: IconProps) => {
       C223.501617,346.754730 233.254395,321.272278 238.313568,294.135071 
       C240.431641,282.773895 241.121506,271.146484 242.730362,259.320068 
       C243.000000,344.898193 243.000000,430.796387 243.000000,517.000000 
-      C205.979660,517.000000 168.958496,517.000000 131.468658,517.000000 z'
-      />
-      <path
-        fill='transparent'
-        opacity='1.000000'
-        stroke='none'
-        d='M1.000000,259.468658 
+      C205.979660,517.000000 168.958496,517.000000 131.468658,517.000000 z"
+            />
+            <path
+                fill="transparent"
+                opacity="1.000000"
+                stroke="none"
+                d="M1.000000,259.468658 
       C1.658249,265.042816 2.312430,271.086121 2.975471,277.128387 
       C5.472275,299.881775 11.624726,321.684021 20.401939,342.750977 
       C31.597956,369.623535 46.935246,394.113403 65.960052,415.982452 
@@ -117,13 +116,13 @@ const MongoDbIcon = ({ fill, height, width, ...props }: IconProps) => {
       C109.397560,477.340485 111.153275,492.974182 112.680397,508.627350 
       C112.921982,511.103577 112.900429,513.605469 113.000275,516.547729 
       C75.710854,517.000000 38.421703,517.000000 1.000000,517.000000 
-      C1.000000,431.312469 1.000000,345.624908 1.000000,259.468658 z'
-      />
-      <path
-        fill='transparent'
-        opacity='1.000000'
-        stroke='none'
-        d='M112.999428,378.010254 
+      C1.000000,431.312469 1.000000,345.624908 1.000000,259.468658 z"
+            />
+            <path
+                fill="transparent"
+                opacity="1.000000"
+                stroke="none"
+                d="M112.999428,378.010254 
       C114.022667,352.794250 115.010498,328.067169 116.083626,303.343811 
       C116.644989,290.410767 117.402992,277.486389 117.989571,264.554321 
       C119.058052,240.997482 120.062332,217.437729 121.117104,193.880264 
@@ -137,10 +136,10 @@ const MongoDbIcon = ({ fill, height, width, ...props }: IconProps) => {
       C134.018356,437.827820 132.253235,442.843719 127.188927,447.339966 
       C124.251244,449.948090 121.928818,450.455811 118.691910,447.352875 
       C113.295677,442.180054 109.603630,437.537109 110.627281,428.743103 
-      C112.561234,412.128723 112.330544,395.262360 112.999428,378.010254 z'
-      />
-    </ModMongoDbIcon>
-  )
+      C112.561234,412.128723 112.330544,395.262360 112.999428,378.010254 z"
+            />
+        </ModMongoDbIcon>
+    )
 }
 
-export default MongoDbIcon
+export default withLayout(MongoDbIcon)

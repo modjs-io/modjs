@@ -1,22 +1,22 @@
 import React from 'react'
-import {styled} from 'styled-components'
-import withLayout from '../../assets/withLayout'
+import { styled } from 'styled-components'
+import { withLayout } from '../../../../utils/src/index'
 
-interface SlideshowMediaProps {
-    children: React.ReactNode[]
+interface ModSlideshowMediaProps extends React.HTMLAttributes<HTMLDivElement> {
+    children: React.ReactNode
 }
 
-const ModSlideshowMedia = styled.div<SlideshowMediaProps>`
-
+const ModSlideshowMedia = styled.div<ModSlideshowMediaProps>`
+    text-align: center;
+    margin-bottom: ${props => props.theme.spacing.dense};
 `
 
-const SlideshowMedia = ({ children, ...props }: SlideshowMediaProps) => {
-
-  return (
-    <ModSlideshowMedia {...props}>
-        {children}
-    </ModSlideshowMedia>
-  )
+const SlideshowMedia = ({ children, ...props }: ModSlideshowMediaProps) => {
+    return (
+        <ModSlideshowMedia {...props} data-test="slideshow-media">
+            {children}
+        </ModSlideshowMedia>
+    )
 }
 
 export default withLayout(SlideshowMedia)

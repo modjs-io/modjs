@@ -1,32 +1,36 @@
 import React from 'react'
-import {styled} from 'styled-components'
+import { styled } from 'styled-components'
+import { withLayout } from '../../../../utils/src/index'
+import { IconProps } from '../../utils/IconProps'
 
-type IconProps = React.SVGAttributes<SVGSVGElement> & {
-  fill?: string
-  height?: string
-  width?: string
-}
-
-const ModDatabaseIcon = styled.svg`
-  fill: ${props => props.fill ? props.fill : ({theme}) => theme.color.primary};
-  height: ${props => props.height ? props.height : ({theme}) => theme.icons.height.lg};
-  width: ${props => props.width ? props.width : ({theme}) => theme.icons.width.lg};
-`;
+const ModDatabaseIcon = styled.svg<IconProps>`
+    fill: ${props => (props.fill ? props.fill : props.theme.color.primary)};
+    height: ${props =>
+        props.height ? props.height : props.theme.icons.height.lg};
+    width: ${props => (props.width ? props.width : props.theme.icons.width.lg)};
+`
 
 const DatabaseIcon = ({ fill, height, width, ...props }: IconProps) => {
-  return (
-    <ModDatabaseIcon 
-      {...props} 
-      xmlns='http://www.w3.org/2000/svg' 
-      viewBox='0 0 1200 1200'
-      height = {height}
-      width = {width}
-      >
-      <title>Database Filled Icon</title>
-      <metadata>Created by Prashan Pudasaini on Thursday, January 4th, 2024 @ fullstackpro.io</metadata>
-      <g transform='translate(100, 1070) scale(0.100000,-0.100000)' fill={fill} stroke='none'>
-        <path
-          d='M3365 8991 c9 -15 -21 -19 -185 -26 -212 -8 -664 -52 -831 -80 -47
+    return (
+        <ModDatabaseIcon
+            {...props}
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1200 1200"
+            height={height}
+            width={width}
+        >
+            <title>Database Icon</title>
+            <metadata>
+                Created by Prashan Pudasaini on Thursday, January 4th, 2024 @
+                fullstackpro.io
+            </metadata>
+            <g
+                transform="translate(100, 1070) scale(0.100000,-0.100000)"
+                fill={fill}
+                stroke="none"
+            >
+                <path
+                    d="M3365 8991 c9 -15 -21 -19 -185 -26 -212 -8 -664 -52 -831 -80 -47
           -8 -98 -15 -114 -15 -15 0 -66 -7 -114 -16 -47 -9 -122 -22 -166 -30 -209 -38
           -358 -71 -540 -118 -428 -112 -784 -259 -1017 -421 -209 -145 -329 -292 -387
           -476 -16 -51 -14 -264 3 -319 73 -233 274 -427 622 -599 132 -65 156 -76 234
@@ -40,10 +44,10 @@ const DatabaseIcon = ({ fill, height, width, ...props }: IconProps) => {
           -228 276 -448 407 -25 15 -219 110 -263 128 -18 8 -47 21 -65 28 -66 29 -93
           39 -241 87 -163 54 -217 70 -313 94 -199 50 -272 67 -393 91 -47 9 -115 23
           -151 31 -37 8 -78 14 -93 14 -14 0 -58 6 -98 14 -207 41 -767 101 -1038 111
-          -164 7 -194 11 -185 26 4 5 -222 9 -580 9 -358 0 -584 -4 -580 -9z'
-        />
-        <path
-          d='M0 6616 c0 -89 34 -212 79 -286 11 -19 24 -42 28 -50 26 -59 181
+          -164 7 -194 11 -185 26 4 5 -222 9 -580 9 -358 0 -584 -4 -580 -9z"
+                />
+                <path
+                    d="M0 6616 c0 -89 34 -212 79 -286 11 -19 24 -42 28 -50 26 -59 181
           -223 266 -282 190 -132 342 -212 562 -295 22 -8 51 -19 63 -24 69 -27 291 -94
           407 -123 33 -8 87 -21 120 -30 33 -8 98 -22 145 -31 47 -9 117 -22 155 -30
           273 -55 755 -116 1154 -146 78 -6 149 -13 157 -16 11 -4 14 -51 14 -259 l0
@@ -67,10 +71,10 @@ const DatabaseIcon = ({ fill, height, width, ...props }: IconProps) => {
           -19 5 -66 18 -105 30 -38 12 -83 25 -100 30 -40 11 -137 45 -215 75 -25 9 -63
           24 -85 32 -62 23 -90 36 -230 104 -158 76 -255 134 -357 211 l-78 58 0 -64z
           m4198 -1344 c9 -7 12 -65 10 -258 l-3 -249 -262 -3 -263 -2 0 253 c0 140 3
-          257 7 260 9 10 495 8 511 -1z'
-        />
-        <path
-          d='M3 4484 c9 -132 36 -211 116 -334 74 -115 276 -291 434 -379 100 -56
+          257 7 260 9 10 495 8 511 -1z"
+                />
+                <path
+                    d="M3 4484 c9 -132 36 -211 116 -334 74 -115 276 -291 434 -379 100 -56
           301 -151 318 -151 6 0 23 -6 37 -14 30 -15 49 -22 202 -71 120 -39 179 -57
           265 -78 33 -9 87 -22 120 -31 237 -60 724 -143 975 -166 47 -4 128 -13 180
           -18 85 -10 386 -39 465 -45 l30 -2 3 -254 c1 -140 -1 -258 -5 -262 -27 -27
@@ -89,10 +93,10 @@ const DatabaseIcon = ({ fill, height, width, ...props }: IconProps) => {
           -216 48 -508 133 -670 195 -30 12 -66 25 -80 30 -66 23 -112 41 -128 50 -9 5
           -62 30 -117 56 -115 54 -275 148 -355 209 -88 67 -83 68 -77 -21z m4205 -1569
           c2 -226 1 -251 -15 -262 -24 -18 -484 -18 -501 -1 -13 13 -18 499 -5 511 4 4
-          122 6 262 5 l256 -3 3 -250z'
-        />
-        <path
-          d='M3 2373 c9 -131 37 -213 116 -333 123 -187 387 -380 691 -504 36 -15
+          122 6 262 5 l256 -3 3 -250z"
+                />
+                <path
+                    d="M3 2373 c9 -131 37 -213 116 -333 123 -187 387 -380 691 -504 36 -15
           74 -31 85 -35 65 -27 90 -36 185 -67 165 -53 237 -74 375 -107 33 -8 83 -21
           110 -27 28 -7 70 -16 95 -20 57 -10 147 -28 227 -46 34 -8 75 -14 90 -14 15 0
           61 -6 103 -14 203 -39 799 -106 942 -106 42 0 88 -4 102 -10 l26 -10 0 -254
@@ -115,12 +119,11 @@ const DatabaseIcon = ({ fill, height, width, ...props }: IconProps) => {
           -445 147 -16 7 -70 30 -120 51 -99 40 -303 144 -393 199 -58 36 -112 72 -143
           96 -20 16 -40 29 -44 29 -4 0 -5 -35 -2 -77z m4193 -1317 c11 -4 14 -55 14
           -260 l0 -256 -22 -5 c-13 -3 -131 -4 -263 -3 l-240 3 -3 254 c-1 146 2 258 7
-          265 9 11 478 13 507 2z'
-        />
-      </g>
-    </ModDatabaseIcon>
-  )
+          265 9 11 478 13 507 2z"
+                />
+            </g>
+        </ModDatabaseIcon>
+    )
 }
 
-
-export default DatabaseIcon
+export default withLayout(DatabaseIcon)

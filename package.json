@@ -1,12 +1,72 @@
 {
   "name": "@modjs/monorepo",
-  "version": "1.0.1",
+  "version": "2.0.0",
+  "workspaces": [
+    "packages/core",
+    "packages/helpers",
+    "packages/icons",
+    "packages/utils"
+  ],
   "private": true,
-  "keywords": ["modjs", "modjs-icons", "react-icons", "react-components", "react", "ui", "frontend"],
+  "keywords": [
+    "modjs",
+    "modjs-icons",
+    "react-icons",
+    "react-components",
+    "react",
+    "ui",
+    "frontend"
+  ],
   "author": "Prashan Pudasaini",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/fullstackpro-io/modjs.git"
+    "url": "https://github.com/modjs-io/modjs.git"
+  },
+  "scripts": {
+    "dev:test:server": "webpack serve",
+    "prePublish:core": "npm run prePublish --workspace @modjs/core",
+    "prePublish:helpers": "npm run prePublish --workspace @modjs/helpers",
+    "prePublish:icons": "npm run prePublish --workspace @modjs/icons",
+    "prePublish:utils": "npm run prePublish --workspace @modjs/utils",
+    "publish:core": "npm run publish --workspace @modjs/core",
+    "publish:helpers": "npm run publish --workspace @modjs/helpers",
+    "publish:icons": "npm run publish --workspace @modjs/icons",
+    "publish:utils": "npm run publish --workspace @modjs/utils"
+  },
+  "dependencies": {
+    "@modjs/core": "file:./packages/core",
+    "@modjs/helpers": "file:./packages/helpers",
+    "@modjs/icons": "file:./packages/icons",
+    "@modjs/utils": "file:./packages/utils",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.24.5",
+    "@babel/core": "^7.24.5",
+    "@babel/preset-env": "^7.24.5",
+    "@babel/preset-react": "^7.24.1",
+    "@babel/preset-typescript": "^7.24.1",
+    "@cypress/code-coverage": "^3.12.39",
+    "@eslint/js": "^9.3.0",
+    "@testing-library/react": "^16.0.0",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.0",
+    "@types/uuid": "^9.0.8",
+    "@vitest/coverage-v8": "^1.6.0",
+    "@vitest/ui": "^1.6.0",
+    "babel-plugin-styled-components": "^2.1.4",
+    "cypress": "^13.9.0",
+    "eslint": "^8.57.0",
+    "jsdom": "^24.1.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.2.5",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.4.5",
+    "typescript-eslint": "^7.10.0",
+    "vitest": "^1.6.0",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
   }
 }

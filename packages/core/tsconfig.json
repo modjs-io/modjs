@@ -1,14 +1,10 @@
 {
-  "include": ["src/**/*"],
-  "exclude": ["build", "node_modules"],
-  "compilerOptions": {
-    "declaration": true,
-    "emitDeclarationOnly": true,
-    "declarationMap": true,
-    "outDir": "build/types",
-    "allowSyntheticDefaultImports":true,
-    "moduleResolution":"Node",
-    "jsx":"react",
-    "esModuleInterop": true
-  },
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "module": "esnext",
+        "outDir": "./build/types",
+        "target": "esnext",
+        "lib": ["dom"]
+    },
+    "include": ["./src/**/*", "cypress", "../utils/src/assets/themes/ModTheme.ts"],
 }

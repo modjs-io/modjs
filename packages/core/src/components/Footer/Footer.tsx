@@ -1,27 +1,27 @@
 import React from 'react'
-import withLayout from '../../assets/withLayout'
-import {styled} from 'styled-components'
+import { withLayout } from '../../../../utils/src/index'
+import { styled } from 'styled-components'
 
-type FooterProps = React.HTMLProps<HTMLElement> & {
-  children: React.ReactNode
+interface ModFooterProps extends React.HTMLAttributes<HTMLElement> {
+    children: React.ReactNode
 }
 
-const ModFooter = styled.footer<FooterProps>`
+const ModFooter = styled.footer<ModFooterProps>`
     bottom: 0;
     z-index: -2;
     width: 100%;
     position: fixed;
     @media (max-width: 768px) {
-      position: relative;
-    };
+        position: relative;
+    }
 `
 
-const Footer = ({ children, ...props }: FooterProps) => {
-  return (
-    <ModFooter {...props}>
-      {children}
-    </ModFooter>
-  )
+const Footer = ({ children, ...props }: ModFooterProps) => {
+    return (
+        <ModFooter {...props} data-test="footer">
+            {children}
+        </ModFooter>
+    )
 }
 
 export default withLayout(Footer)

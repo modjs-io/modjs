@@ -1,0 +1,38 @@
+{
+    "compilerOptions": {
+        "allowJs": false,  // Set to false to prevent TypeScript from compiling JavaScript files
+        "allowSyntheticDefaultImports": true,
+        "declaration": true,
+        "declarationMap": false, //Prevent creating .d.ts.map files
+        "emitDeclarationOnly": false, //set to false for cypress to work
+        "noEmit": false, //set to false for cypress to work
+        "esModuleInterop": true,
+        "inlineSourceMap": false,
+        "lib": ["esnext"],
+        "listEmittedFiles": false,
+        "listFiles": false,
+        "moduleResolution": "node",
+        "noFallthroughCasesInSwitch": true,
+        "pretty": true,
+        "resolveJsonModule": true,
+        "skipLibCheck": true,
+        "strict": true,
+        "traceResolution": false,
+        "jsx": "react",
+        "types": ["cypress", "react", "react-dom", "uuid"],
+        "baseUrl": "./",
+        "paths": {
+            "@modjs/core": ["./packages/core/src"],
+            "@modjs/core/*": ["./packages/core/src/*"],
+            "@modjs/helpers": ["./packages/helpers/src"],
+            "@modjs/helpers/*": ["./packages/helpers/src/*"],
+            "@modjs/icons": ["./packages/icons/src"],
+            "@modjs/icons/*": ["./packages/icons/src/*"],
+            "@modjs/utils": ["./packages/utils/src"],
+            "@modjs/utils/*": ["./packages/utils/src/*"],
+     
+        }
+    },
+    "compileOnSave": false,
+    "exclude": ["node_modules", "build"],
+  }

@@ -1,34 +1,33 @@
 import React from 'react'
-import {styled} from 'styled-components'
+import { styled } from 'styled-components'
+import { withLayout } from '../../../../utils/src/index'
+import { IconProps } from '../../utils/IconProps'
 
-type IconProps = React.SVGAttributes<SVGSVGElement> & {
-  fill?: string
-  height?: string
-  width?: string
-}
-
-const ModLoginIcon = styled.svg`
-  fill: ${props => props.fill ? props.fill : ({theme}) => theme.color.primary};
-  height: ${props => props.height ? props.height : ({theme}) => theme.icons.height.sm};
-  width: ${props => props.width ? props.width : ({theme}) => theme.icons.width.sm};
-`;
+const ModLoginIcon = styled.svg<IconProps>`
+    fill: ${props => (props.fill ? props.fill : props.theme.color.primary)};
+    height: ${props =>
+        props.height ? props.height : props.theme.icons.height.sm};
+    width: ${props => (props.width ? props.width : props.theme.icons.width.sm)};
+`
 
 const LoginIcon = ({ fill, height, width, ...props }: IconProps) => {
-  return (
-    <ModLoginIcon
-      {...props}
-      version='1.0'
-      xmlns='http://www.w3.org/2000/svg'
-      viewBox='0 0 900.000000 900.000000'
-      preserveAspectRatio='xMidYMid meet'
-      height = {height}
-      width = {width}
-    >
-      <title>Login Outlined Icon</title>
-      <metadata>Created by Prashan Pudasaini on Thursday, January 4th, 2024 @ fullstackpro.io</metadata>
-      <g transform='translate(0.000000,900.000000) scale(0.100000,-0.100000)' fill={fill} stroke='none'>
-        <path
-          d='M3550 8881 c-47 -10 -105 -25 -130 -34 -25 -9 -64 -23 -86 -31 -99
+    return (
+        <ModLoginIcon
+            {...props}
+            version="1.0"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 900.000000 900.000000"
+            preserveAspectRatio="xMidYMid meet"
+            height={height}
+            width={width}
+        >
+            <g
+                transform="translate(0.000000,900.000000) scale(0.100000,-0.100000)"
+                fill={fill}
+                stroke="none"
+            >
+                <path
+                    d="M3550 8881 c-47 -10 -105 -25 -130 -34 -25 -9 -64 -23 -86 -31 -99
 -36 -245 -132 -339 -223 -135 -131 -205 -239 -273 -418 -71 -186 -67 -116 -67
 -1270 l0 -1040 27 -50 c38 -72 69 -111 119 -148 70 -53 117 -67 223 -67 83 0
 99 3 153 30 74 37 145 111 181 188 l27 57 2 985 c2 718 6 997 15 1030 27 103
@@ -41,10 +40,10 @@ const LoginIcon = ({ fill, height, width, ...props }: IconProps) => {
 30 -11 99 -30 153 -40 96 -20 151 -20 2222 -20 2076 0 2126 0 2222 20 123 25
 172 40 259 80 233 109 436 312 544 544 40 87 55 136 80 259 20 97 20 151 20
 3507 0 3356 0 3410 -20 3507 -25 123 -40 172 -80 259 -128 276 -388 506 -672
-593 -175 54 -43 51 -2356 50 -1998 -1 -2143 -2 -2222 -18z'
-        />
-        <path
-          d='M4764 5941 c-83 -25 -136 -61 -189 -128 -47 -60 -85 -161 -85 -225 0
+593 -175 54 -43 51 -2356 50 -1998 -1 -2143 -2 -2222 -18z"
+                />
+                <path
+                    d="M4764 5941 c-83 -25 -136 -61 -189 -128 -47 -60 -85 -161 -85 -225 0
 -50 28 -136 62 -193 17 -27 136 -154 264 -283 129 -129 234 -238 234 -243 0
 -5 -980 -10 -2347 -11 -2335 -3 -2348 -3 -2388 -23 -79 -40 -123 -74 -159
 -123 -100 -136 -100 -308 0 -444 36 -49 80 -83 159 -123 40 -20 53 -20 2388
@@ -52,11 +51,11 @@ const LoginIcon = ({ fill, height, width, ...props }: IconProps) => {
 -280 -316 -27 -58 -31 -78 -31 -149 0 -98 17 -151 74 -227 74 -99 152 -135
 291 -136 169 0 129 -32 810 649 542 543 593 596 623 658 29 61 32 77 32 158 0
 80 -3 97 -32 157 -29 63 -74 110 -617 653 -369 369 -601 594 -627 607 -57 29
--140 53 -183 52 -20 0 -63 -9 -97 -18z'
-        />
-      </g>
-    </ModLoginIcon>
-  )
+-140 53 -183 52 -20 0 -63 -9 -97 -18z"
+                />
+            </g>
+        </ModLoginIcon>
+    )
 }
 
-export default LoginIcon
+export default withLayout(LoginIcon)

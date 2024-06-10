@@ -1,34 +1,33 @@
 import React from 'react'
-import {styled} from 'styled-components'
+import { styled } from 'styled-components'
+import { withLayout } from '../../../../utils/src/index'
+import { IconProps } from '../../utils/IconProps'
 
-type IconProps = React.SVGAttributes<SVGSVGElement> & {
-  fill?: string
-  height?: string
-  width?: string
-}
-
-const ModEmailIcon = styled.svg`
-  fill: ${props => props.fill ? props.fill : ({theme}) => theme.color.primary};
-  height: ${props => props.height ? props.height : ({theme}) => theme.icons.height.sm};
-  width: ${props => props.width ? props.width : ({theme}) => theme.icons.width.sm};
-`;
+const ModEmailIcon = styled.svg<IconProps>`
+    fill: ${props => (props.fill ? props.fill : props.theme.color.primary)};
+    height: ${props =>
+        props.height ? props.height : props.theme.icons.height.sm};
+    width: ${props => (props.width ? props.width : props.theme.icons.width.sm)};
+`
 
 const EmailIcon = ({ fill, height, width, ...props }: IconProps) => {
-  return (
-    <ModEmailIcon
-      {...props}
-      version='1.0'
-      xmlns='http://www.w3.org/2000/svg'
-      viewBox='0 0 900.000000 900.000000'
-      preserveAspectRatio='xMidYMid meet'
-      height = {height}
-      width = {width}
-    >
-      <title>Email Outlined Icon</title>
-      <metadata>Created by Prashan Pudasaini on Thursday, January 4th, 2024 @ fullstackpro.io</metadata>
-      <g transform='translate(0.000000,900.000000) scale(0.100000,-0.100000)' fill={fill} stroke='none'>
-        <path
-          d='M4570 8664 c-133 -6 -390 -41 -595 -80 -201 -39 -509 -126 -685 -194
+    return (
+        <ModEmailIcon
+            {...props}
+            version="1.0"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 900.000000 900.000000"
+            preserveAspectRatio="xMidYMid meet"
+            height={height}
+            width={width}
+        >
+            <g
+                transform="translate(0.000000,900.000000) scale(0.100000,-0.100000)"
+                fill={fill}
+                stroke="none"
+            >
+                <path
+                    d="M4570 8664 c-133 -6 -390 -41 -595 -80 -201 -39 -509 -126 -685 -194
                       -30 -12 -66 -25 -80 -30 -96 -31 -445 -199 -565 -271 -247 -148 -386 -242
                       -539 -367 -362 -295 -640 -600 -890 -972 -60 -90 -164 -257 -179 -290 -4 -8
                       -22 -42 -40 -75 -65 -119 -77 -142 -122 -240 -102 -223 -145 -331 -207 -525
@@ -86,11 +85,11 @@ const EmailIcon = ({ fill, height, width, ...props }: IconProps) => {
                       -184 -233 -228 -236 -454 -325 -698 -274 -136 29 -234 89 -313 193 -46 60
                       -107 180 -107 210 0 9 -8 37 -17 62 -14 37 -17 85 -17 280 0 156 5 255 13 295
                       7 33 17 80 21 105 13 81 72 274 105 345 31 67 87 181 98 200 69 115 153 229
-                      233 314 212 224 447 359 719 412 33 6 65 13 70 14 23 8 294 3 340 -5z'
-        />
-      </g>
-    </ModEmailIcon>
-  )
+                      233 314 212 224 447 359 719 412 33 6 65 13 70 14 23 8 294 3 340 -5z"
+                />
+            </g>
+        </ModEmailIcon>
+    )
 }
 
-export default EmailIcon
+export default withLayout(EmailIcon)

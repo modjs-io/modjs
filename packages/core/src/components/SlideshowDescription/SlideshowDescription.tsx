@@ -1,22 +1,25 @@
 import React from 'react'
-import {styled} from 'styled-components'
-import withLayout from '../../assets/withLayout'
+import { styled } from 'styled-components'
+import { withLayout } from '../../../../utils/src/index'
 
-interface SlideshowDescriptionProps {
-    children: React.ReactNode[]
+interface ModSlideshowDescriptionProps
+    extends React.HTMLAttributes<HTMLDivElement> {
+    children: React.ReactNode
 }
 
-const ModSlideshowDescription = styled.div<SlideshowDescriptionProps>`
-
+const ModSlideshowDescription = styled.div<ModSlideshowDescriptionProps>`
+    text-align: center;
 `
 
-const SlideshowDescription = ({ children, ...props }: SlideshowDescriptionProps) => {
-
-  return (
-    <ModSlideshowDescription {...props}>
-        {children}
-    </ModSlideshowDescription>
-  )
+const SlideshowDescription = ({
+    children,
+    ...props
+}: ModSlideshowDescriptionProps) => {
+    return (
+        <ModSlideshowDescription {...props} data-test="slideshow-description">
+            {children}
+        </ModSlideshowDescription>
+    )
 }
 
 export default withLayout(SlideshowDescription)

@@ -1,39 +1,55 @@
 import React from 'react'
-import {styled} from 'styled-components'
-import withLayout from '../../assets/withLayout'
+import { styled } from 'styled-components'
+import { withLayout } from '../../../../utils/src/index'
 
-interface AvatarProps {
-  brightness?: 'light' | 'normal' | 'dark'
-  height?: 'sm' | 'md' | 'lg'
-  width?: 'sm' | 'md' | 'lg'
+interface ModAvatarProps extends React.HTMLAttributes<HTMLImageElement> {
+    brightness?: 'light' | 'normal' | 'dark'
+    height?: 'sm' | 'md' | 'lg'
+    width?: 'sm' | 'md' | 'lg'
 }
 
-const forwardProps = (prop: string) => !['brightness', 'height', 'width'].includes(prop);
+const forwardProps = (prop: string) =>
+    !['brightness', 'height', 'width'].includes(prop)
 
 const ModAvatar = styled.img.withConfig({
-    shouldForwardProp: (prop) => forwardProps(prop)
-  })<AvatarProps>`
-    height: ${props => 
-        props.height === 'sm' ? ({theme}) => theme.avatar.height.sm : 
-        props.height === 'md' ? ({theme}) => theme.avatar.height.md : 
-        props.height === 'lg' ? ({theme}) => theme.avatar.height.lg :
-    ''};
-    width: ${props => 
-        props.width === 'sm' ? ({theme}) => theme.avatar.width.sm : 
-        props.width === 'md' ? ({theme}) => theme.avatar.width.md : 
-        props.width === 'lg' ? ({theme}) => theme.avatar.width.lg :
-    ''};
-    filter: ${props => 
-        props.brightness === "light" ? ({theme}) => theme.avatar.brightness.light :
-        props.brightness === "normal" ? ({theme}) => theme.avatar.brightness.normal : 
-        props.brightness === "dark" ? ({theme}) => theme.avatar.brightness.dark : 
-    ''};
-    border-radius: 100%;
+    shouldForwardProp: prop => forwardProps(prop),
+})<ModAvatarProps>`
+    height: ${props =>
+        props.height === 'sm'
+            ? props.theme.avatar.height.sm
+            : props.height === 'md'
+              ? props.theme.avatar.height.md
+              : props.height === 'lg'
+                ? props.theme.avatar.height.lg
+                : ''};
+    width: ${props =>
+        props.width === 'sm'
+            ? props.theme.avatar.width.sm
+            : props.width === 'md'
+              ? props.theme.avatar.width.md
+              : props.width === 'lg'
+                ? props.theme.avatar.width.lg
+                : ''};
+    filter: ${props =>
+        props.brightness === 'light'
+            ? props.theme.avatar.brightness.light
+            : props.brightness === 'normal'
+              ? props.theme.avatar.brightness.normal
+              : props.brightness === 'dark'
+                ? props.theme.avatar.brightness.dark
+                : ''};
+    border-radius: 100% !important;
 `
 
-const Avatar = ({ ...props }: AvatarProps) => {
-  return (
-    <ModAvatar {...props} />  
+const Avatar = ({ brightness, height, width, ...props }: ModAvatarProps) => {
+    return (
+        <ModAvatar
+            {...props}
+            brightness={brightness ? brightness : 'light'}
+            height={height ? height : 'sm'}
+            width={width ? width : 'sm'}
+            data-test="avatar"
+        />
     )
 }
 

@@ -1,21 +1,21 @@
 import React from 'react'
-import {styled} from 'styled-components'
-import withLayout from '../../assets/withLayout'
+import { styled } from 'styled-components'
+import { withLayout } from '../../../../utils/src/index'
 
-interface CardHeaderProps {
-  children: React.ReactNode
+interface ModCardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
+    children: React.ReactNode
 }
 
-const ModCardHeader = styled.div<CardHeaderProps>`
-
+const ModCardHeader = styled.div<ModCardHeaderProps>`
+    color: ${props => props.theme.color.dark};
 `
 
-const CardHeader = ({ children, ...props }: CardHeaderProps) => {
-  return (
-      <ModCardHeader {...props}>
-        {children}
-      </ModCardHeader>
-  )
+const CardHeader = ({ children, ...props }: ModCardHeaderProps) => {
+    return (
+        <ModCardHeader {...props} data-test="card-header">
+            {children}
+        </ModCardHeader>
+    )
 }
 
 export default withLayout(CardHeader)

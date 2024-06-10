@@ -1,34 +1,33 @@
 import React from 'react'
-import {styled} from 'styled-components'
+import { styled } from 'styled-components'
+import { withLayout } from '../../../../utils/src/index'
+import { IconProps } from '../../utils/IconProps'
 
-type IconProps = React.SVGAttributes<SVGSVGElement> & {
-  fill?: string
-  height?: string
-  width?: string
-}
+const ModJavascriptIcon = styled.svg<IconProps>`
+    height: ${props =>
+        props.height ? props.height : props.theme.icons.height.lg};
+    width: ${props => (props.width ? props.width : props.theme.icons.width.lg)};
+`
 
-const ModJavascriptIcon = styled.svg`
-  fill: ${props => props.fill ? props.fill : ({theme}) => theme.color.primary};
-  height: ${props => props.height ? props.height : ({theme}) => theme.icons.height.lg};
-  width: ${props => props.width ? props.width : ({theme}) => theme.icons.width.lg};
-`;
-
-const JavascriptIcon = ({  fill, height, width, ...props }: IconProps) => {
-  return (
-    <ModJavascriptIcon 
-      {...props} 
-      xmlns='http://www.w3.org/2000/svg' 
-      viewBox='-50 -50 980 900'
-      height = {height}
-      width = {width}
-      >
-      <title>Javascript Icon</title>
-      <metadata>Created by Prashan Pudasaini on Thursday, January 4th, 2024 @ fullstackpro.io</metadata>
-      <path
-        fill='transparent'
-        opacity='1.000000'
-        stroke='none'
-        d='M861.000000,316.000000 
+const JavascriptIcon = ({ height, width, ...props }: IconProps) => {
+    return (
+        <ModJavascriptIcon
+            {...props}
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="-50 -50 980 900"
+            height={height}
+            width={width}
+        >
+            <title>Javascript Icon</title>
+            <metadata>
+                Created by Prashan Pudasaini on Thursday, January 4th, 2024 @
+                fullstackpro.io
+            </metadata>
+            <path
+                fill="transparent"
+                opacity="1.000000"
+                stroke="none"
+                d="M861.000000,316.000000 
       C861.000000,487.999908 861.000000,659.499817 861.000000,830.999817 
       C574.333496,830.999878 287.667053,830.999878 1.000430,830.999939 
       C1.000287,554.333618 1.000287,277.667267 1.000143,1.000690 
@@ -56,13 +55,13 @@ const JavascriptIcon = ({  fill, height, width, ...props }: IconProps) => {
       C744.532837,232.956680 747.761536,197.137238 750.984741,161.317276 
       C753.208069,136.608704 755.453918,111.902161 757.658752,87.191948 
       C759.016174,71.979118 760.315247,56.761078 761.688049,41.000069 
-      C756.749146,41.000069 752.120789,41.000069 746.495239,41.000069 z'
-      />
-      <path
-        fill='#D4B830'
-        opacity='1.000000'
-        stroke='none'
-        d='M746.993896,41.000069 
+      C756.749146,41.000069 752.120789,41.000069 746.495239,41.000069 z"
+            />
+            <path
+                fill="#D4B830"
+                opacity="1.000000"
+                stroke="none"
+                d="M746.993896,41.000069 
       C752.120789,41.000069 756.749146,41.000069 761.688049,41.000069 
       C760.315247,56.761078 759.016174,71.979118 757.658752,87.191948 
       C755.453918,111.902161 753.208069,136.608704 750.984741,161.317276 
@@ -126,13 +125,13 @@ const JavascriptIcon = ({  fill, height, width, ...props }: IconProps) => {
       C258.919922,606.104187 309.870453,616.273132 360.831909,626.385742 
       C376.643097,629.523193 392.448273,632.690979 408.400818,635.873657 
       C408.400818,481.413544 408.400818,327.391754 408.400818,173.129547 
-      C401.150421,173.129547 394.325134,173.129547 386.499939,173.129501 z'
-      />
-      <path
-        fill='#FCD83C'
-        opacity='1.000000'
-        stroke='none'
-        d='M690.977295,214.811890 
+      C401.150421,173.129547 394.325134,173.129547 386.499939,173.129501 z"
+            />
+            <path
+                fill="#FCD83C"
+                opacity="1.000000"
+                stroke="none"
+                d="M690.977295,214.811890 
       C689.977966,225.827133 689.000916,236.381027 687.989746,246.931656 
       C686.742065,259.950897 685.423340,272.963501 684.217285,285.986572 
       C683.407349,294.732391 682.780090,303.494995 681.999023,312.243652 
@@ -181,13 +180,13 @@ const JavascriptIcon = ({  fill, height, width, ...props }: IconProps) => {
       C541.099243,312.164215 541.099243,284.275848 541.099243,255.907928 
       C582.413086,255.907928 623.328613,255.907928 664.649719,255.907928 
       C667.107727,228.204681 669.526306,200.945770 671.995239,173.119781 
-      C638.072266,173.119781 604.786133,173.119781 570.500000,173.119690 z'
-      />
-      <path
-        fill='#010100'
-        opacity='1.000000'
-        stroke='none'
-        d='M386.999878,173.129517 
+      C638.072266,173.119781 604.786133,173.119781 570.500000,173.119690 z"
+            />
+            <path
+                fill="#010100"
+                opacity="1.000000"
+                stroke="none"
+                d="M386.999878,173.129517 
       C394.325134,173.129547 401.150421,173.129547 408.400818,173.129547 
       C408.400818,327.391754 408.400818,481.413544 408.400818,635.873657 
       C392.448273,632.690979 376.643097,629.523193 360.831909,626.385742 
@@ -201,13 +200,13 @@ const JavascriptIcon = ({  fill, height, width, ...props }: IconProps) => {
       C325.396149,443.589600 325.396149,350.186127 325.396149,256.242859 
       C294.300446,256.242859 263.236420,256.242859 231.576935,256.242859 
       C228.992889,228.475815 226.453262,201.186142 223.842270,173.129501 
-      C278.329620,173.129501 332.414764,173.129501 386.999878,173.129517 z'
-      />
-      <path
-        fill='#4E4E4D'
-        opacity='1.000000'
-        stroke='none'
-        d='M571.000000,173.119736 
+      C278.329620,173.129501 332.414764,173.129501 386.999878,173.129517 z"
+            />
+            <path
+                fill="#4E4E4D"
+                opacity="1.000000"
+                stroke="none"
+                d="M571.000000,173.119736 
       C604.786133,173.119781 638.072266,173.119781 671.995239,173.119781 
       C669.526306,200.945770 667.107727,228.204681 664.649719,255.907928 
       C623.328613,255.907928 582.413086,255.907928 541.099243,255.907928 
@@ -229,10 +228,10 @@ const JavascriptIcon = ({  fill, height, width, ...props }: IconProps) => {
       C566.728149,425.007965 566.539246,424.690338 566.272949,423.755341 
       C529.221985,423.755341 491.993256,423.755341 454.384705,423.755341 
       C454.384705,340.071716 454.384705,257.015839 454.384705,173.119690 
-      C493.015533,173.119690 531.757751,173.119690 571.000000,173.119736 z'
-      />
-    </ModJavascriptIcon>
-  )
+      C493.015533,173.119690 531.757751,173.119690 571.000000,173.119736 z"
+            />
+        </ModJavascriptIcon>
+    )
 }
 
-export default JavascriptIcon
+export default withLayout(JavascriptIcon)

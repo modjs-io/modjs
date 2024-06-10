@@ -1,21 +1,22 @@
 import React from 'react'
-import {styled} from 'styled-components'
-import withLayout from '../../assets/withLayout'
+import { styled } from 'styled-components'
+import { withLayout } from '../../../../utils/src/index'
 
-interface NavProps {
-  children: React.ReactNode
+interface ModNavProps extends React.HTMLAttributes<HTMLElement> {
+    children: React.ReactNode
 }
 
 const ModNav = styled.nav`
-
+    margin: 0;
+    padding: 0;
 `
 
-const Nav = ({ children, ...props }: NavProps) => {
-  return (
-    <ModNav {...props}>
-      {children}
-    </ModNav>
-  )
+const Nav = ({ children, ...props }: ModNavProps) => {
+    return (
+        <ModNav {...props} data-test="nav">
+            {children}
+        </ModNav>
+    )
 }
 
 export default withLayout(Nav)

@@ -1,34 +1,33 @@
 import React from 'react'
-import {styled} from 'styled-components'
+import { styled } from 'styled-components'
+import { withLayout } from '../../../../utils/src/index'
+import { IconProps } from '../../utils/IconProps'
 
-type IconProps = React.SVGAttributes<SVGSVGElement> & {
-  fill?: string
-  height?: string
-  width?: string
-}
-
-const ModErrorIcon = styled.svg`
-  fill: ${props => props.fill ? props.fill : ({theme}) => theme.color.primary};
-  height: ${props => props.height ? props.height : ({theme}) => theme.icons.height.sm};
-  width: ${props => props.width ? props.width : ({theme}) => theme.icons.width.sm};
-`;
+const ModErrorIcon = styled.svg<IconProps>`
+    fill: ${props => (props.fill ? props.fill : props.theme.color.error)};
+    height: ${props =>
+        props.height ? props.height : props.theme.icons.height.sm};
+    width: ${props => (props.width ? props.width : props.theme.icons.width.sm)};
+`
 
 const ErrorIcon = ({ fill, height, width, ...props }: IconProps) => {
-  return (
-    <ModErrorIcon
-      {...props}
-      version='1.0'
-      xmlns='http://www.w3.org/2000/svg'
-      viewBox='0 0 900.000000 1400.000000'
-      preserveAspectRatio='xMidYMid meet'
-      height = {height}
-      width = {width}
-    >
-      <title>Error Outlined Icon</title>
-      <metadata>Created by Prashan Pudasaini on Thursday, April 19th, 2024 @ fullstackpro.io</metadata>
-      <g transform="translate(0.000000,1536.000000) scale(0.100000,-0.100000)"
-        fill={fill} stroke="none">
-        <path d="M6405 14488 c-120 -8 -264 -22 -405 -37 -80 -9 -165 -24 -270 -47
+    return (
+        <ModErrorIcon
+            {...props}
+            version="1.0"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 900.000000 1400.000000"
+            preserveAspectRatio="xMidYMid meet"
+            height={height}
+            width={width}
+        >
+            <g
+                transform="translate(0.000000,1536.000000) scale(0.100000,-0.100000)"
+                fill={fill}
+                stroke="none"
+            >
+                <path
+                    d="M6405 14488 c-120 -8 -264 -22 -405 -37 -80 -9 -165 -24 -270 -47
         -36 -8 -75 -14 -87 -14 -41 0 -435 -89 -488 -110 -18 -8 -44 -15 -149 -41 -22
         -5 -44 -13 -50 -17 -11 -7 -156 -59 -191 -69 -28 -7 -204 -72 -242 -89 -17 -8
         -34 -14 -38 -14 -4 0 -54 -23 -112 -50 -57 -28 -125 -59 -151 -70 -223 -89
@@ -68,9 +67,10 @@ const ErrorIcon = ({ fill, height, width, ...props }: IconProps) => {
         215 24 5 159 -6 207 -16z m75 -5002 c115 -37 198 -89 295 -186 92 -92 148
         -186 190 -320 26 -85 28 -276 4 -359 -95 -322 -334 -524 -646 -546 -221 -16
         -398 45 -561 195 -88 80 -149 180 -198 320 -19 54 -22 87 -23 200 -1 155 8
-        191 81 337 78 159 223 286 403 354 121 46 321 48 455 5z"/>
-        </g>
-    </ModErrorIcon>
-  )
+        191 81 337 78 159 223 286 403 354 121 46 321 48 455 5z"
+                />
+            </g>
+        </ModErrorIcon>
+    )
 }
-export default ErrorIcon
+export default withLayout(ErrorIcon)

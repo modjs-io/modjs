@@ -1,35 +1,55 @@
-import React, { useEffect, useState } from 'react';
-import {styled} from 'styled-components'
+import React, { useEffect, useState } from 'react'
+import { styled } from 'styled-components'
+import { withLayout } from '../../../../utils/src/index'
 
-const ModProgressBar = styled.div`
-    display: ${props => props.isLoading === 'true' ? "block" : "none"};
+interface ModProgressBarProps extends React.HTMLAttributes<HTMLDivElement> {
+    isLoading?: boolean
+    variant?: 'success' | 'error' | 'default'
+}
+
+const forwardProps = (prop: string) => !['isLoading', 'variant'].includes(prop)
+
+const ModProgressBar = styled.div.withConfig({
+    shouldForwardProp: prop => forwardProps(prop),
+})<ModProgressBarProps>`
+    display: ${props => (props.isLoading ? 'block' : 'none')};
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 4em;
-    background-color: red;
+    background-color: ${props =>
+        props.variant === 'success'
+            ? props.theme.color.success
+            : props.variant === 'error'
+              ? props.theme.color.error
+              : props.theme.color.primary};
+    height: 0.2em;
 `
 
-const ProgressBar = () => {
-  const [loading, setLoading] = useState(true);
+const ProgressBar = ({ variant, ...props }: ModProgressBarProps) => {
+    const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    const finishLoading = () => {
-      setLoading(false);
-    };
+    useEffect(() => {
+        const finishLoading = () => {
+            setLoading(false)
+        }
 
-    window.addEventListener('load', finishLoading);
+        window.addEventListener('load', finishLoading)
 
-    return () => {
-      window.removeEventListener('load', finishLoading);
-    };
-  }, []);
+        return () => {
+            window.removeEventListener('load', finishLoading)
+        }
+    }, [])
 
-  return (
-    <ModProgressBar style={{ display: loading ? 'block' : 'none', position: 'fixed', top: 0, left: 0, width: '100%', height: '4px', backgroundColor: '#5a6b31' }}>
-    </ModProgressBar>
-  );
-};
+    return (
+        <ModProgressBar
+            isLoading={loading}
+            variant={variant ? variant : 'default'}
+            {...props}
+            data-test="progress-bar"
+        />
+    )
+}
 
-export default ProgressBar;
+export default withLayout(ProgressBar)

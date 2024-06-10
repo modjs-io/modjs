@@ -1,57 +1,70 @@
-import React, {useState, useEffect} from 'react'
-import {styled} from 'styled-components'
-import withLayout from '../../assets/withLayout'
+import React, { useState, useEffect } from 'react'
+import { styled } from 'styled-components'
+import { useMediaQuery, withLayout } from '../../../../utils/src/index'
 
 interface AppbarProps {
-  children: React.ReactNode
-  sticky?: 'true' | 'false'
+    children: React.ReactNode
+    sticky?: boolean
+    persistent?: boolean
 }
 
-const forwardProps = (prop: string) => !['sticky'].includes(prop);
+const forwardProps = (prop: string) => !['sticky', 'persistent'].includes(prop)
 
 const ModAppbar = styled.nav.withConfig({
-  shouldForwardProp: (prop) => forwardProps(prop)
+    shouldForwardProp: prop => forwardProps(prop),
 })<AppbarProps>`
-    background-color: ${({theme}) => theme.color.white};
-    ${props => props.sticky === "false" && `
-        position: static;
+    background-color: ${props => props.theme.color.white};
+    height: 50px;
+    ${props =>
+        props.sticky &&
+        props.persistent &&
+        `
+        position: fixed;
+        top: 0;
+        width: 100%;
+        box-shadow:
+            rgb(0 0 0 / 30%) 0px 6px 6px,
+            rgb(0 0 0 / 5%) 0px 10px 20px;
     `};
-    ${props => props.sticky === "true" && `
-        width: -webkit-fill-available;
-        width: -moz-available;
-        position: sticky;
-        top: 0em;
-        z-index: 1000;
-        box-shadow: ${({ top }) => (top ? 'rgb(0 0 0 / 30%) 0px 6px 6px, rgb(0 0 0 / 5%) 0px 10px 20px' : 'none')};
-  `};
     @media (max-width: 768px) {
         display: none;
-    };
+    }
 `
 
 const Appbar = ({ children, ...props }: AppbarProps) => {
-  const [top, settop] = useState(false)
+    const smScreen = useMediaQuery({ query: { media: '(max-width: 768px)' } })
 
-  const handleScroll = () => {
-    if (window.pageYOffset >= 56) {
-      settop(true)
-    } else {
-      settop(false)
+    const [sticky, setSticky] = useState(false)
+
+    const handleScroll = () => {
+        if (window.scrollY >= 50) {
+            setSticky(true)
+        } else {
+            setSticky(false)
+        }
     }
-  }
 
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll)
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+        }
+    }, [])
 
-  return (
-      <ModAppbar {...props}>
-        {children}
-      </ModAppbar>
-  )
+    return (
+        <>
+            {!smScreen && (
+                <ModAppbar
+                    {...props}
+                    sticky={sticky === true ? true : false}
+                    persistent={sticky === true ? true : false}
+                    data-test="appbar"
+                >
+                    {children}
+                </ModAppbar>
+            )}
+        </>
+    )
 }
 
 export default withLayout(Appbar)
