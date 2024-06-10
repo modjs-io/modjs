@@ -1,6 +1,6 @@
 {
   "name": "@modjs/monorepo",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "workspaces": [
     "packages/core",
     "packages/helpers",
