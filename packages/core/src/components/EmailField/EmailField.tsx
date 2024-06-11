@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { styled } from 'styled-components'
-import { ModTheme, withLayout } from '../../../../utils/src/index'
-import { validateEmail, formatEmail } from '../../../../helpers/src/index'
-import { EmailIcon, ErrorIcon } from '../../../../icons/src/index'
+import { ModTheme, withLayout } from '@modjs/utils'
+import { validateEmail, formatEmail } from '@modjs/helpers'
+import { EmailIcon, ErrorIcon } from '@modjs/icons'
 import { Box, Typography } from '../../index'
 
 interface TextFieldProps extends React.HTMLAttributes<HTMLInputElement> {

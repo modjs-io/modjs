@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { styled } from 'styled-components'
-import { useMediaQuery, withLayout } from '../../../../utils/src/index'
-
+import { useMediaQuery, withLayout } from '@modjs/utils'
+import { MenuIcon, CloseIcon } from '@modjs/icons'
 import { Box, Button } from '../../index'
-import { MenuIcon, CloseIcon } from '../../../../icons/src/index'
 
 interface ModMobileAppbarProps {
     children: React.ReactNode

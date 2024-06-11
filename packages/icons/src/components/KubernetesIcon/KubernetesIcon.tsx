@@ -1,6 +1,6 @@
 import React from 'react'
 import { styled } from 'styled-components'
-import { withLayout } from '../../../../utils/src/index'
+import { withLayout } from '@modjs/utils'
 import { IconProps } from '../../utils/IconProps'
 
 const ModKubernetesIcon = styled.svg<IconProps>`

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { styled } from 'styled-components'
-import { withLayout } from '../../../../utils/src/index'
-import { CloseIcon } from '../../../../icons/src/index'
+import { withLayout } from '@modjs/utils'
+import { CloseIcon } from '@modjs/icons'
 import { Box, Button } from '../../index'
 
 interface ModSnackbarProps extends React.HTMLAttributes<HTMLDivElement> {

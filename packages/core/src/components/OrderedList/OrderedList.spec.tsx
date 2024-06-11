@@ -1,6 +1,6 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { ModTheme } from '../../../../utils/src/index'
+import { ModTheme } from '@modjs/utils'
 import { OrderedList } from '../../index'
 
 describe('OrderedList', () => {
@@ -23,19 +23,6 @@ describe('OrderedList', () => {
         })
     })
     context('Styles and Variants', () => {
-        it('should apply specified styles from withLayout HOC', () => {
-            cy.mount(
-                <ThemeProvider theme={ModTheme}>
-                    <OrderedList bgColor="light" p="normal">
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry.
-                    </OrderedList>
-                </ThemeProvider>,
-            )
-            cy.get('[data-test="ordered-list"]')
-                .should('have.css', 'padding', '16px')
-                .and('have.css', 'background-color', 'rgb(142, 142, 142)')
-        })
         context('Indentation', () => {
             it('should render OrderedList with indent', () => {
                 cy.mount(

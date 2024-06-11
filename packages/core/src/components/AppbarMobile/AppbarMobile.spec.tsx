@@ -1,7 +1,7 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { ModTheme } from '../../../../utils/src/index'
-import { PilotProIcon } from '../../../../icons/src/index'
+import { ModTheme } from '@modjs/utils'
+import { PilotProIcon } from '@modjs/icons'
 import { AppbarMobile, Box, Container, Link, Typography } from '../../index'
 
 describe('AppbarMobile', () => {

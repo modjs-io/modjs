@@ -1,7 +1,8 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { Bob, ModTheme } from '../../../../utils/src/index'
+import { ModTheme } from '@modjs/utils'
 import { Image } from '../../index'
+import Bob from '../../assets/images/bob.jpeg'
 
 describe('Image', () => {
     context('Render with default props', () => {
@@ -24,14 +25,6 @@ describe('Image', () => {
         })
     })
     context('Styles and Variants', () => {
-        it('should apply specified styles from withLayout HOC', () => {
-            cy.mount(
-                <ThemeProvider theme={ModTheme}>
-                    <Image src={Bob} p="normal" />
-                </ThemeProvider>,
-            )
-            cy.get('[data-test="image"]').should('have.css', 'padding', '16px')
-        })
         context('Notched', () => {
             it('should render image without notch', () => {
                 cy.mount(

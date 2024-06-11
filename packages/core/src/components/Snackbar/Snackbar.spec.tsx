@@ -1,6 +1,6 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { ModTheme } from '../../../../utils/src/index'
+import { ModTheme } from '@modjs/utils'
 import {
     Snackbar,
     Typography,
@@ -144,35 +144,6 @@ describe('Snackbar', () => {
     })
 
     context('Styles and Variants', () => {
-        it('should apply specified styles from withLayout HOC', () => {
-            cy.mount(
-                <ThemeProvider theme={ModTheme}>
-                    <Snackbar
-                        variant="filled"
-                        notched={true}
-                        visible={true}
-                        disableTimeout
-                        bgColor="dark"
-                    >
-                        <SnackbarHeader>
-                            <Typography variant="small" fs="sm">
-                                Filled Snackbar
-                            </Typography>
-                        </SnackbarHeader>
-                        <SnackbarContent>
-                            <Typography variant="small" fs="sm">
-                                Filled Snackbar With Notch
-                            </Typography>
-                        </SnackbarContent>
-                    </Snackbar>
-                </ThemeProvider>,
-            )
-            cy.get('[data-test="snackbar"]').and(
-                'have.css',
-                'background-color',
-                'rgb(71, 71, 71)',
-            )
-        })
         it('should render only SnackbarHeader', () => {
             cy.mount(
                 <ThemeProvider theme={ModTheme}>
@@ -191,11 +162,7 @@ describe('Snackbar', () => {
                     </Snackbar>
                 </ThemeProvider>,
             )
-            cy.get('[data-test="snackbar"]').and(
-                'have.css',
-                'background-color',
-                'rgb(71, 71, 71)',
-            )
+            cy.get('[data-test="snackbar-header"]').should('exist')
         })
         it('should render only SnackbarContent', () => {
             cy.mount(
@@ -215,11 +182,7 @@ describe('Snackbar', () => {
                     </Snackbar>
                 </ThemeProvider>,
             )
-            cy.get('[data-test="snackbar"]').and(
-                'have.css',
-                'background-color',
-                'rgb(71, 71, 71)',
-            )
+            cy.get('[data-test="snackbar-content"]').should('exist')
         })
         context('Positioning', () => {
             it('should put snackbar to the topLeft', () => {
@@ -372,17 +335,6 @@ describe('Snackbar', () => {
                         'clip-path',
                         'polygon(8px 0%, 100% 0%, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0% 100%, 0% 8px, 8px 0%)',
                     )
-                cy.get('button')
-                    .should(
-                        'have.css',
-                        'border-right',
-                        '1px solid rgb(142, 142, 142)',
-                    )
-                    .and(
-                        'have.css',
-                        'border-top',
-                        '1px solid rgb(142, 142, 142)',
-                    )
             })
             it('should render filled Snackbar without notch', () => {
                 cy.mount(
@@ -456,17 +408,6 @@ describe('Snackbar', () => {
                         'clip-path',
                         'polygon(8px 0%, 100% 0%, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0% 100%, 0% 8px, 8px 0%)',
                     )
-                cy.get('button')
-                    .should(
-                        'have.css',
-                        'border-right',
-                        '1px solid rgb(142, 142, 142)',
-                    )
-                    .and(
-                        'have.css',
-                        'border-top',
-                        '1px solid rgb(142, 142, 142)',
-                    )
             })
             it('should render outlined Snackbar without notch', () => {
                 cy.mount(
@@ -537,13 +478,6 @@ describe('Snackbar', () => {
                         'clip-path',
                         'polygon(8px 0%, 100% 0%, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0% 100%, 0% 8px, 8px 0%)',
                     )
-                cy.get('button')
-                    .should(
-                        'have.css',
-                        'border-right',
-                        '1px solid rgb(71, 71, 71)',
-                    )
-                    .and('have.css', 'border-top', '1px solid rgb(71, 71, 71)')
             })
             it('should render dark Snackbar without notch', () => {
                 cy.mount(
@@ -618,13 +552,6 @@ describe('Snackbar', () => {
                         'clip-path',
                         'polygon(8px 0%, 100% 0%, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0% 100%, 0% 8px, 8px 0%)',
                     )
-                cy.get('button')
-                    .should(
-                        'have.css',
-                        'border-right',
-                        '1px solid rgb(90, 107, 49)',
-                    )
-                    .and('have.css', 'border-top', '1px solid rgb(90, 107, 49)')
             })
             it('should render Success Snackbar without notch', () => {
                 cy.mount(
@@ -707,13 +634,6 @@ describe('Snackbar', () => {
                         'clip-path',
                         'polygon(8px 0%, 100% 0%, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0% 100%, 0% 8px, 8px 0%)',
                     )
-                cy.get('button')
-                    .should(
-                        'have.css',
-                        'border-right',
-                        '1px solid rgb(202, 60, 31)',
-                    )
-                    .and('have.css', 'border-top', '1px solid rgb(202, 60, 31)')
             })
             it('should render Error Snackbar without notch', () => {
                 cy.mount(

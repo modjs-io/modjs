@@ -1,6 +1,6 @@
 import React from 'react'
 import { styled } from 'styled-components'
-import { withLayout } from '../../../../utils/src/index'
+import { withLayout } from '@modjs/utils'
 
 interface ModAvatarProps extends React.HTMLAttributes<HTMLImageElement> {
     brightness?: 'light' | 'normal' | 'dark'

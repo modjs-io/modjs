@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { styled } from 'styled-components'
-import { useMediaQuery, withLayout } from '../../../../utils/src/index'
+import { useMediaQuery, withLayout } from '@modjs/utils'
 
 interface AppbarProps {
     children: React.ReactNode

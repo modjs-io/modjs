@@ -1,16 +1,12 @@
 import React from 'react'
 import { styled } from 'styled-components'
-import { withLayout } from '../../../../utils/src/index'
+import { withLayout } from '@modjs/utils'
 
 interface ModBoxProps extends React.HTMLAttributes<HTMLDivElement> {
     children: React.ReactNode
 }
 
-const ModBox = styled.div`
-    margin: 0;
-    padding: 0;
-    display: block;
-`
+const ModBox = styled.div``
 
 const Box = ({ children, ...props }: ModBoxProps) => {
     return (

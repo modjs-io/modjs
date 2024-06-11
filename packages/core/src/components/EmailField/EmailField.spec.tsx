@@ -1,7 +1,7 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { AccountIcon } from '../../../../icons/src/index'
-import { ModTheme } from '../../../../utils/src/index'
+import { AccountIcon } from '@modjs/icons'
+import { ModTheme } from '@modjs/utils'
 import { EmailField } from '../../index'
 
 describe('EmailField', () => {

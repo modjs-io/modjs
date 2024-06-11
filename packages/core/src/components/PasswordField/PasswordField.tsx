@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { styled } from 'styled-components'
-import { ModTheme, withLayout } from '../../../../utils/src/index'
-import { formatPassword, validatePassword } from '../../../../helpers/src/index'
+import { ModTheme, withLayout } from '@modjs/utils'
+import { formatPassword, validatePassword } from '@modjs/helpers'
 import {
     ErrorIcon,
     NotVisibleIcon,

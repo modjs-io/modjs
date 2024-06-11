@@ -1,5 +1,5 @@
 import React from 'react'
-import { withLayout } from '../../../../utils/src/index'
+import { withLayout } from '@modjs/utils'
 import { styled } from 'styled-components'
 
 interface ModFooterProps extends React.HTMLAttributes<HTMLElement> {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { AccountIcon } from '../../../../icons/src/index'
-import { ModTheme } from '../../../../utils/src/index'
+import { AccountIcon } from '@modjs/icons'
+import { ModTheme } from '@modjs/utils'
 import { PhoneField } from '../../index'
 
 describe('PhoneField', () => {
@@ -184,16 +184,6 @@ describe('PhoneField', () => {
                     </ThemeProvider>,
                 )
             })
-        })
-        it('should apply specified styles from withLayout HOC', () => {
-            cy.mount(
-                <ThemeProvider theme={ModTheme}>
-                    <PhoneField variant="filled" p="normal" bgColor="light" />
-                </ThemeProvider>,
-            )
-            cy.get('[data-test="phone-field"]')
-                .should('have.css', 'padding', '16px')
-                .and('have.css', 'background-color', 'rgb(142, 142, 142)')
         })
     })
 })

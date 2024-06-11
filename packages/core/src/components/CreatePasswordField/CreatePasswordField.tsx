@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { styled } from 'styled-components'
-import { ModTheme, withLayout } from '../../../../utils/src/index'
+import { ModTheme, withLayout } from '@modjs/utils'
 
 import {
     formatPassword,
@@ -9,14 +9,14 @@ import {
     validatePasswordLowercase,
     validatePasswordSpecialChar,
     validatePasswordUppercase,
-} from '../../../../helpers/src/index'
+} from '@modjs/helpers'
 import {
     NotVisibleIcon,
     SuccessIcon,
     ErrorIcon,
     PasswordIcon,
     VisibleIcon,
-} from '../../../../icons/src/index'
+} from '@modjs/icons'
 import { Box, Button, Typography } from '../../index'
 
 interface TextFieldProps extends React.HTMLAttributes<HTMLInputElement> {

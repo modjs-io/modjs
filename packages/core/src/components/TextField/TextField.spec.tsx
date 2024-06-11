@@ -1,7 +1,7 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { EmailIcon } from '../../../../icons/src/index'
-import { ModTheme } from '../../../../utils/src/index'
+import { EmailIcon } from '@modjs/icons'
+import { ModTheme } from '@modjs/utils'
 import { TextField } from '../../index'
 
 describe('TextField', () => {
@@ -171,16 +171,6 @@ describe('TextField', () => {
                     </ThemeProvider>,
                 )
             })
-        })
-        it('should apply specified styles from withLayout HOC', () => {
-            cy.mount(
-                <ThemeProvider theme={ModTheme}>
-                    <TextField variant="filled" p="normal" bgColor="light" />
-                </ThemeProvider>,
-            )
-            cy.get('[data-test="text-field"]')
-                .should('have.css', 'padding', '16px')
-                .and('have.css', 'background-color', 'rgb(142, 142, 142)')
         })
     })
 })

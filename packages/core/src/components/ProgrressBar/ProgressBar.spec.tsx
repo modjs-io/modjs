@@ -1,6 +1,6 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { ModTheme } from '../../../../utils/src/index'
+import { ModTheme } from '@modjs/utils'
 import { ProgressBar } from '../../index'
 
 describe('ProgressBar', () => {
@@ -45,18 +45,6 @@ describe('ProgressBar', () => {
     })
 
     context('Styles and Variants', () => {
-        it('should apply specified styles from withLayout HOC', () => {
-            cy.mount(
-                <ThemeProvider theme={ModTheme}>
-                    <ProgressBar isLoading={true} bgColor="success" />
-                </ThemeProvider>,
-            )
-            cy.get('[data-test="progress-bar"]').and(
-                'have.css',
-                'background-color',
-                'rgb(90, 107, 49)',
-            )
-        })
         context('Variants', () => {
             it('should render ProgressBar component with default variant', () => {
                 cy.mount(

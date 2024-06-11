@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { styled } from 'styled-components'
-import { ModTheme, withLayout } from '../../../../utils/src/index'
-import { validateMessage } from '../../../../helpers/src/index'
-import { ErrorIcon, SuccessIcon } from '../../../../icons/src/index'
+import { ModTheme, withLayout } from '@modjs/utils'
+import { validateMessage } from '@modjs/helpers'
+import { ErrorIcon, SuccessIcon } from '@modjs/icons'
 import { Box, Typography } from '../../index'
 
 interface TextAreaProps extends React.HTMLAttributes<HTMLTextAreaElement> {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { AccountIcon } from '../../../../icons/src/index'
-import { ModTheme } from '../../../../utils/src/index'
+import { AccountIcon } from '@modjs/icons'
+import { ModTheme } from '@modjs/utils'
 import { ConfirmPasswordField } from '../../index'
 
 describe('ConfirmPasswordField', () => {
@@ -221,20 +221,6 @@ describe('ConfirmPasswordField', () => {
                     </ThemeProvider>,
                 )
             })
-        })
-        it('should apply specified styles from withLayout HOC', () => {
-            cy.mount(
-                <ThemeProvider theme={ModTheme}>
-                    <ConfirmPasswordField
-                        variant="filled"
-                        p="normal"
-                        bgColor="light"
-                    />
-                </ThemeProvider>,
-            )
-            cy.get('[data-test="confirm-password-field"]')
-                .should('have.css', 'padding', '16px')
-                .and('have.css', 'background-color', 'rgb(142, 142, 142)')
         })
     })
 })

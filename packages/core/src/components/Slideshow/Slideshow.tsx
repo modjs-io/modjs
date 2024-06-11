@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { styled } from 'styled-components'
-import { withLayout } from '../../../../utils/src/index'
-import {
-    LeftArrowIcon,
-    RightArrowIcon,
-    SquareIcon,
-} from '../../../../icons/src/index'
+import { withLayout } from '@modjs/utils'
+import { LeftArrowIcon, RightArrowIcon, SquareIcon } from '@modjs/icons'
 import { Button } from '../../index'
 
 interface ModSlideshowProps extends React.TouchEventHandler<HTMLDivElement> {

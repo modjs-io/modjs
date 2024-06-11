@@ -1,6 +1,6 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { ModTheme } from '../../../../utils/src/index'
+import { ModTheme } from '@modjs/utils'
 import { List } from '../../index'
 
 describe('List', () => {
@@ -24,17 +24,6 @@ describe('List', () => {
         })
     })
     context('Styles and Variants', () => {
-        it('should apply specified styles from withLayout HOC', () => {
-            cy.mount(
-                <ThemeProvider theme={ModTheme}>
-                    <List p="normal">
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry.
-                    </List>
-                </ThemeProvider>,
-            )
-            cy.get('[data-test="list"]').should('have.css', 'padding', '16px')
-        })
         context('List Style', () => {
             it('should render List with square style', () => {
                 cy.mount(

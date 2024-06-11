@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { styled } from 'styled-components'
-import { ModTheme, withLayout } from '../../../../utils/src/index'
+import { ModTheme, withLayout } from '@modjs/utils'
 import {
     NotVisibleIcon,
     PasswordIcon,
     ErrorIcon,
     VisibleIcon,
-} from '../../../../icons/src/index'
-import {
-    formatPassword,
-    matchStrings,
-    validatePassword,
-} from '../../../../helpers/src/index'
+} from '@modjs/icons'
+import { formatPassword, matchStrings, validatePassword } from '@modjs/helpers'
 import { Box, Button, Typography } from '../../index'
 
 interface TextFieldProps extends React.HTMLAttributes<HTMLInputElement> {

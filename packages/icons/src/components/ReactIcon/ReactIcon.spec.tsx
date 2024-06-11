@@ -1,6 +1,6 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { ModTheme } from '../../../../utils/src/index'
+import { ModTheme } from '@modjs/utils'
 import { ReactIcon } from '../../index'
 
 describe('ReactIcon', () => {

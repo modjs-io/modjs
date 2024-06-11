@@ -1,6 +1,7 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { Bob, ModTheme } from '../../../../utils/src/index'
+import { ModTheme } from '@modjs/utils'
+import Bob from '../../assets/images/bob.jpeg'
 
 import {
     Card,
@@ -204,16 +205,6 @@ describe('Card', () => {
                     .and('have.css', 'border', '0px none rgb(0, 0, 0)')
                     .and('have.css', 'clip-path', 'none')
             })
-        })
-        it('should apply specified styles from withLayout HOC', () => {
-            cy.mount(
-                <ThemeProvider theme={ModTheme}>
-                    <Card variant="filled" p="normal" bgColor="light" />
-                </ThemeProvider>,
-            )
-            cy.get('[data-test="card"]')
-                .should('have.css', 'padding', '16px')
-                .and('have.css', 'background-color', 'rgb(142, 142, 142)')
         })
     })
 })

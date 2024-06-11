@@ -1,6 +1,6 @@
 import React from 'react'
-import { withLayout } from '../../../../utils/src/index'
 import { styled } from 'styled-components'
+import { withLayout } from '@modjs/utils'
 
 interface ModHeaderProps extends React.HTMLAttributes<HTMLElement> {
     children: React.ReactNode

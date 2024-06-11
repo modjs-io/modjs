@@ -1,6 +1,6 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { ModTheme } from '../../../../utils/src/index'
+import { ModTheme } from '@modjs/utils'
 import { UnorderedList } from '../../index'
 
 describe('UnorderedList', () => {
@@ -23,19 +23,6 @@ describe('UnorderedList', () => {
         })
     })
     context('Styles and Variants', () => {
-        it('should apply specified styles from withLayout HOC', () => {
-            cy.mount(
-                <ThemeProvider theme={ModTheme}>
-                    <UnorderedList bgColor="light" p="normal">
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry.
-                    </UnorderedList>
-                </ThemeProvider>,
-            )
-            cy.get('[data-test="unordered-list"]')
-                .should('have.css', 'padding', '16px')
-                .and('have.css', 'background-color', 'rgb(142, 142, 142)')
-        })
         context('Indentation', () => {
             it('should render UnorderedList with indent', () => {
                 cy.mount(

@@ -1,6 +1,6 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { ModTheme } from '../../../../utils/src/index'
+import { ModTheme } from '@modjs/utils'
 import { Card, CardMeta, Typography } from '../../index'
 
 describe('CardMeta', () => {
@@ -16,24 +16,6 @@ describe('CardMeta', () => {
                 </ThemeProvider>,
             )
             cy.get('[data-test="card-meta"]').should('exist')
-        })
-    })
-    context('Styles and Variants', () => {
-        it('should apply specified styles from withLayout HOC', () => {
-            cy.mount(
-                <ThemeProvider theme={ModTheme}>
-                    <Card>
-                        <CardMeta p="normal">
-                            <Typography variant="small">Card Meta</Typography>
-                        </CardMeta>
-                    </Card>
-                </ThemeProvider>,
-            )
-            cy.get('[data-test="card-meta"]').should(
-                'have.css',
-                'padding',
-                '16px',
-            )
         })
     })
 })

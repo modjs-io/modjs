@@ -1,7 +1,7 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { Bob, ModTheme } from '../../../../utils/src/index'
-import { QuoteIcon } from '../../../../icons/src/index'
+import { ModTheme } from '@modjs/utils'
+import { QuoteIcon } from '@modjs/icons'
 import {
     Box,
     Slideshow,
@@ -12,6 +12,7 @@ import {
     Avatar,
     Typography,
 } from '../../index'
+import Bob from '../../assets/images/bob.jpeg'
 
 const data = [
     {

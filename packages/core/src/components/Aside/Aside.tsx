@@ -1,16 +1,12 @@
 import React from 'react'
 import { styled } from 'styled-components'
-import { withLayout } from '../../../../utils/src/index'
+import { withLayout } from '@modjs/utils'
 
 interface ModAsideProps extends React.HTMLAttributes<HTMLElement> {
     children: React.ReactNode
 }
 
-const ModAside = styled.aside<ModAsideProps>`
-    margin: 0;
-    padding: 0;
-    display: block;
-`
+const ModAside = styled.aside<ModAsideProps>``
 
 const Aside = ({ children, ...props }: ModAsideProps) => {
     return (

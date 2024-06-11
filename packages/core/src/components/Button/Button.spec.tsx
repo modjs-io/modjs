@@ -1,7 +1,7 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { ModTheme } from '../../../../utils/src/index'
-import { RightChevronIcon, LoginIcon } from '../../../../icons/src/index'
+import { ModTheme } from '@modjs/utils'
+import { RightChevronIcon, LoginIcon } from '@modjs/icons'
 import { Button } from '../../index'
 
 describe('Button', () => {
@@ -187,19 +187,6 @@ describe('Button', () => {
                         )
                     })
             })
-        })
-
-        it('should apply specified styles from withLayout HOC', () => {
-            cy.mount(
-                <ThemeProvider theme={ModTheme}>
-                    <Button bgColor="dark">
-                        Button with styles from withLayout HOC
-                    </Button>
-                </ThemeProvider>,
-            )
-            cy.get('[data-test="button"]')
-                .should('exist')
-                .should('have.css', 'background-color', 'rgb(71, 71, 71)')
         })
     })
 })

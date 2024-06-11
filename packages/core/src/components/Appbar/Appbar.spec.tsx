@@ -1,7 +1,7 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { ModTheme } from '../../../../utils/src/index'
-import { MailIcon, PilotProIcon } from '../../../../icons/src/index'
+import { ModTheme } from '@modjs/utils'
+import { MailIcon, PilotProIcon } from '@modjs/icons'
 import { Appbar, Box, Container, Link, Toolbar, Typography } from '../../index'
 
 describe('Appbar', () => {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { styled } from 'styled-components'
-import { withLayout } from '../../../../utils/src/index'
+import { withLayout } from '@modjs/utils'
 
 interface ModProgressBarProps extends React.HTMLAttributes<HTMLDivElement> {
     isLoading?: boolean
