@@ -7,7 +7,7 @@ import {
     NotVisibleIcon,
     PasswordIcon,
     VisibleIcon,
-} from '../../../../icons/src/index'
+} from '@modjs/icons'
 import { Box, Button, Typography } from '../../index'
 
 interface TextFieldProps extends React.HTMLAttributes<HTMLInputElement> {
